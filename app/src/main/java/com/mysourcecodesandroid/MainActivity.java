@@ -2,20 +2,27 @@ package com.mysourcecodesandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView mainListView;
+    Context context = this;
 
     String headList[] = {"Example 0", "Example 1", "Example 2", "Example 3", "Example 4", "Example 5",
             "Example 6", "Example 7", "Example 8", "Example 9", "Example 10"};
     String descriptionsList[] = {"RadioButton ve programatik olarak eklenen checkbox örneği",
-            "Example 1",
+            "Custom Toast Message Example",
             "Example 2",
             "Çalışma Zamanında(Programatik) Buton TextView Ekleme ve Buton Click Olayı",
             "macedonia",
@@ -34,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init() {
-        mainListView = (ListView) findViewById(R.id.mainListView);
+        mainListView = findViewById(R.id.mainListView);
         CustomAdapter customAdapter = new CustomAdapter(getApplicationContext(), headList, descriptionsList, pictures);
         mainListView.setAdapter(customAdapter);
 
@@ -47,8 +54,25 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intentExample0);
                         break;
                     case 1:
-                        Intent intentExample1 = new Intent(MainActivity.this, ActivityExample1.class);
-                        startActivity(intentExample1);
+                        // custom toast message activity_example1.xml
+                        // erişim icin LayoutInflater kullaıyoruz
+                        LayoutInflater layoutInflater = LayoutInflater.from(context);
+                        View viewLayout = layoutInflater.inflate(R.layout.activity_example1, null);
+
+                        // Image nesnesini yukluyoruz
+                        ImageView imageView = viewLayout.findViewById(R.id.imgExample1);
+                        imageView.setImageResource(R.mipmap.ic_launcher_flag_turkey);
+
+                        // Text nesnesine ulaşıyoruz
+                        TextView textView = viewLayout.findViewById(R.id.txtExample1);
+                        textView.setText("Activity example1 custom toast message");
+
+                        // Custom Toast message
+                        Toast toast = new Toast(context);
+                        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                        toast.setDuration(Toast.LENGTH_LONG);
+                        toast.setView(viewLayout);
+                        toast.show();
                         break;
                     case 2:
                         Intent intentExample2 = new Intent(MainActivity.this, ActivityExample2.class);

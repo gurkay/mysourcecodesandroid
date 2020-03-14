@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">mysourcecodesandroid</string>
+    <string name="activity_example1_custom_toast_message">activity example1 custom toast message</string>
 </resources>
