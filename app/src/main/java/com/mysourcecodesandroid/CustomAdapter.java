@@ -11,15 +11,17 @@ import android.widget.TextView;
 public class CustomAdapter extends BaseAdapter {
 
     Context context;
+    String headList[];
     String descriptionList[];
     int pictures[];
     LayoutInflater inflater;
 
-    public CustomAdapter(Context applicationContex, String[] descriptionList, int[] pictures) {
+    public CustomAdapter(Context applicationContext, String[] headList, String[] descriptionList, int[] pictures) {
         this.context = context;
+        this.headList = headList;
         this.descriptionList = descriptionList;
         this.pictures = pictures;
-        inflater = (LayoutInflater.from(applicationContex));
+        inflater = (LayoutInflater.from(applicationContext));
     }
 
     @Override
@@ -40,8 +42,10 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflater.inflate(R.layout.activity_main_listview, null);
+        TextView head = (TextView) convertView.findViewById(R.id.txtHeadListView);
         TextView description = (TextView) convertView.findViewById(R.id.txtMainListView);
         ImageView imgViewIcon = (ImageView) convertView.findViewById(R.id.imgViewIcon);
+        head.setText(headList[position]);
         description.setText(descriptionList[position]);
         imgViewIcon.setImageResource(pictures[position]);
         return convertView;

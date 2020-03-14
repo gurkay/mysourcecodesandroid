@@ -7,16 +7,36 @@
 
     <ImageView
         android:id="@+id/imgViewIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/turkey"/>
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@mipmap/ic_launcher"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:layout_marginTop="5dp">
+    <TextView
+        android:id="@+id/txtHeadListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:padding="1dp"
+        android:text="Listview Header"
+        android:textColor="@color/colorPrimaryDark"/>
     <TextView
         android:id="@+id/txtMainListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="@android:dimen/app_icon_size"
+        android:layout_gravity="center_horizontal"
+        android:padding="1dp"
+        android:layout_margin="1dp"
+        android:text="Listview Describtions"
         android:textColor="@color/colorPrimaryDark"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
