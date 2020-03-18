@@ -3,12 +3,62 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="20dp">
 
-    <TextView
-        android:id="@+id/txtExample0"
+    <RadioGroup
+        android:id="@+id/radioGrpExample0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioBtnOneShotExample0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tek Çekim Ödeme"/>
+
+        <RadioButton
+            android:id="@+id/radioBtnInstallmentExample0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taksitli Ödeme"
+            android:checked="true"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/pnlInstallmentExample0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Example 0 activity"/>
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edTxtInstallmentExample0"
+            android:ems="10"
+            android:inputType="number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <requestFocus/>
+        </EditText>
+
+        <Button
+            android:id="@+id/btnDisplayExample0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taksitlendir"/>
+    </LinearLayout>
+    <ScrollView
+        android:id="@+id/scrViewExample0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/pnlInstallmentsExample0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -9,10 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityExample0"></activity>
-        <activity android:name=".Programmatically" />
-        <activity android:name=".ActivityExample2" />
-        <activity android:name=".ActivityExample1" />
+        <activity
+            android:name=".ActivityTextToSpeech"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".ActivityExample0"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".Programmatically"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".ActivityExample21"
+            android:parentActivityName=".ActivityExample2"></activity>
+        <activity
+            android:name=".ActivityExample2"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".ActivityExample1"
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

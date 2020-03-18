@@ -2,6 +2,7 @@ package com.mysourcecodesandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,22 +22,30 @@ public class MainActivity extends AppCompatActivity {
 
     String headList[] = {"Example 0", "Example 1", "Example 2", "Example 3", "Example 4", "Example 5",
             "Example 6", "Example 7", "Example 8", "Example 9", "Example 10"};
-    String descriptionsList[] = {"RadioButton ve programatik olarak eklenen checkbox örneği",
+    String descriptionsList[] = {
+            "RadioButton ve programatik olarak eklenen checkbox örneği",
             "Custom Toast Message Example",
-            "Example 2",
+            "Intent login screen",
             "Çalışma Zamanında(Programatik) Buton TextView Ekleme ve Buton Click Olayı",
-            "macedonia",
-            "nigeria", "romania", "south_korea", "turkey", "vietnam", "Test"};
+            "Text to Speech Example",
+            "nigeria",
+            "romania",
+            "south_korea",
+            "turkey",
+            "vietnam",
+            "Test"
+    };
     int pictures[] = {R.drawable.afghanistan, R.drawable.albania, R.drawable.algeria,
             R.drawable.argentina, R.drawable.macedonia, R.drawable.nigeria,
             R.drawable.romania, R.drawable.south_korea, R.drawable.turkey,
             R.drawable.vietnam, R.drawable.turkey};
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // init function call
         init();
     }
 
@@ -61,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                         // Image nesnesini yukluyoruz
                         ImageView imageView = viewLayout.findViewById(R.id.imgExample1);
-                        imageView.setImageResource(R.mipmap.ic_launcher_flag_turkey);
+                        imageView.setImageResource(R.mipmap.ic_launcher_error);
 
                         // Text nesnesine ulaşıyoruz
                         TextView textView = viewLayout.findViewById(R.id.txtExample1);
@@ -79,8 +88,10 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intentExample2);
                         break;
                     case 3:
-                        Intent intentProgrammatically = new Intent(MainActivity.this, Programmatically.class);
-                        startActivity(intentProgrammatically);
+                        startActivity(new Intent(MainActivity.this, Programmatically.class));
+                        break;
+                    case 4:
+                        startActivity(new Intent(MainActivity.this, ActivityTextToSpeech.class));
                         break;
                     default:
                         break;
