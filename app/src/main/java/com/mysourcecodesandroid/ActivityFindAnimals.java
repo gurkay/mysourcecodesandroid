@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ActivityFindAnimals extends AppCompatActivity {
 
@@ -39,17 +41,26 @@ public class ActivityFindAnimals extends AppCompatActivity {
             R.drawable.bengal_tiger, R.drawable.dolphin, R.drawable.dog
     };
 
-
+    TextView txtQuestionFindAnimals;
+    ImageView imgPicturesOfQuestion0FindAnimals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_animals);
+        init();
 
     }
 
     public void init() {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        txtQuestionFindAnimals = findViewById(R.id.txtQuestionFindAnimals);
+        imgPicturesOfQuestion0FindAnimals = findViewById(R.id.imgPicturesOfQuestion0FindAnimals);
+
+        txtQuestionFindAnimals.setText(questionFindAnimals[0]);
+        imgPicturesOfQuestion0FindAnimals.setImageResource(picturesFindAnimals[0]);
+
 
     }
 
