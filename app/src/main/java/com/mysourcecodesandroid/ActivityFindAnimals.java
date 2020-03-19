@@ -43,6 +43,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
     TextView txtQuestionFindAnimals;
     ImageView imgPicturesOfQuestion0FindAnimals;
+    LinearLayout tblRow3FindAnimals;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,26 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
         txtQuestionFindAnimals = findViewById(R.id.txtQuestionFindAnimals);
         imgPicturesOfQuestion0FindAnimals = findViewById(R.id.imgPicturesOfQuestion0FindAnimals);
+        
+        tblRow3FindAnimals.setVisibility(View.INVISIBLE);
+        
+        // take number of installment
+        int level = 1;
+        
+        if(level == 1) {
+            tblRow3FindAnimals.setVisibility(View.VISIBLE);
+            
+            // image view create
+            for (int i = 0; i < installment; i++) {
+                
+                CheckBox checkBox = new CheckBox(context);
+                checkBox.setText((i+1) + ". Taksit");
 
+                pnlInstallmentsExample0.addView(checkBox);
+            }
+            
+        }
+        
         txtQuestionFindAnimals.setText(questionFindAnimals[0]);
         imgPicturesOfQuestion0FindAnimals.setImageResource(picturesFindAnimals[0]);
 
