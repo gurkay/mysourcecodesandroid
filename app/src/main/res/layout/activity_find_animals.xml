@@ -90,21 +90,18 @@
             android:layout_height="wrap_content"
             android:text="Question"
             android:textSize="25sp"/>
-
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/tblRow3FindAnimals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imgPicturesOfQuestion0FindAnimals"
-            android:layout_width="wrap_content"
+    <ScrollView
+        android:id="@+id/scrViewFindAnimals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/tblRow3FindAnimals"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25sp"/>
-
-    </LinearLayout>
+            android:orientation="vertical">
+        </LinearLayout>        
+    </ScrollView>
 
 </LinearLayout>
