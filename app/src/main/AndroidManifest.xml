@@ -10,23 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ActivityTextToSpeech"
+            android:name=".ActivityFindAnimals"
             android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".ActivityTextToSpeech"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivityExample0"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Programmatically"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivityExample21"
-            android:parentActivityName=".ActivityExample2"></activity>
+            android:parentActivityName=".ActivityExample2" />
         <activity
             android:name=".ActivityExample2"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivityExample1"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

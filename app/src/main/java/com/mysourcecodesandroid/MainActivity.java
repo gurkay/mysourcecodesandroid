@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             "Intent login screen",
             "Çalışma Zamanında(Programatik) Buton TextView Ekleme ve Buton Click Olayı",
             "Text to Speech Example",
-            "nigeria",
+            "Find Animals Game",
             "romania",
             "south_korea",
             "turkey",
@@ -92,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 4:
                         startActivity(new Intent(MainActivity.this, ActivityTextToSpeech.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, ActivityFindAnimals.class));
                         break;
                     default:
                         break;

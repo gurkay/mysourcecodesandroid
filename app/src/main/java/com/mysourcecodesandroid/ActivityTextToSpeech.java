@@ -1,6 +1,5 @@
 package com.mysourcecodesandroid;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -8,13 +7,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -45,7 +42,7 @@ public class ActivityTextToSpeech extends AppCompatActivity {
             @Override
             public void onInit(int status) {
                 if(status == TextToSpeech.SUCCESS) {
-                    int result = mTTS.setLanguage(Locale.ENGLISH);
+                    int result = mTTS.setLanguage(Locale.getDefault());
 
                     if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                         Log.e("TTS", "Language not supported");
@@ -65,10 +62,11 @@ public class ActivityTextToSpeech extends AppCompatActivity {
         btnSpeakTextToSpeech.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Test", Toast.LENGTH_SHORT).show();
                 speak();
             }
         });
+
+        //onDestroy();
     }
 
     private void speak() {
@@ -84,10 +82,8 @@ public class ActivityTextToSpeech extends AppCompatActivity {
         // Controller SDK versions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mTTS.speak(text, TextToSpeech.QUEUE_FLUSH,null,null);
-            Toast.makeText(context, "great Lolipop", Toast.LENGTH_SHORT).show();
         } else {
             mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-            Toast.makeText(context, "not Lolipop", Toast.LENGTH_SHORT).show();
         }
     }
 
