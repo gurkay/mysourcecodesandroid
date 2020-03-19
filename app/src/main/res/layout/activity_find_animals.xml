@@ -99,11 +99,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtPicturesOfQuestionFindAnimals"
+        <ImageView
+            android:id="@+id/txtPicturesOfQuestion0FindAnimals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pictures"
             android:textSize="25sp"/>
 
     </LinearLayout>
