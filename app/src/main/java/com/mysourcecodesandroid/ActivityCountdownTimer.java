@@ -13,8 +13,18 @@ import android.widget.Toast;
 
 public class ActivityCountdownTimer extends AppCompatActivity {
 
-    EditText edUserNameExample2, edPasswordExample2;
-    Button btnSendExample2, btnClearExample2;
+    private static final long START_TIME_IN_MILLIS = 600000;
+    
+    private TextView mTextViewCountDown;
+    private Button mButtonStartPause;
+    private Button mButtonReset;
+    
+    private CountDownTimer mCountDownTimer;
+    
+    private boolean mTimerRunning;
+    
+    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
+    
     Context context = this;
 
     @Override
@@ -29,10 +39,11 @@ public class ActivityCountdownTimer extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        edUserNameExample2 = findViewById(R.id.edUserNameExample2);
-        edPasswordExample2 = findViewById(R.id.edPasswordExample2);
-        btnSendExample2 = findViewById(R.id.btnSendExample2);
-        btnClearExample2 = findViewById(R.id.btnClearExample2);
+        mTextViewCountDown = findViewById(R.id.text_view_countdown);
+        
+        mButtonStartPause = findViewById(R.id.button_start_pause);
+        mButtonReset = findViewById(R.id.button_reset);
+            
 
     }
 
