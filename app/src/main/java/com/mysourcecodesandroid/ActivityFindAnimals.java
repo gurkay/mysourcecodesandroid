@@ -50,6 +50,12 @@ public class ActivityFindAnimals extends AppCompatActivity {
             R.drawable.bengal_tiger, R.drawable.dolphin, R.drawable.dog
     };
 
+    String[] useImage = {
+            "false", "false", "false", "false", "false", "false", "false", "false", "false",
+            "false", "false", "false", "false", "false", "false", "false", "false", "false",
+            "false"
+    };
+
     TextView txtQuestionFindAnimals;
     TableRow tblRow3FirstRowFindAnimals, tblRow3SecondRowFindAnimals, tblRow3ThreeRowFindAnimals, tblRow3FourRowFindAnimals;
     TableLayout tblRow3FindAnimals;
@@ -122,7 +128,14 @@ public class ActivityFindAnimals extends AppCompatActivity {
             // image view create
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 2; j++) {
+
                     int randomNumber = randomNumberCreate(0, 18);
+
+                    // Use to image
+                    while (useToImage(randomNumber) == true) {
+                        randomNumber = randomNumberCreate(0, 18);
+                    }
+
                     final ImageView imageView = new ImageView(context);
 
                     switch (i) {
@@ -223,6 +236,18 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
     }
 
+    public boolean useToImage(int imageId) {
+        boolean conclution = false;
+
+        if(useImage[imageId].equals("false")) {
+            useImage[imageId] = "true";
+            conclution = false;
+        } else {
+            conclution = true;
+        }
+
+        return conclution;
+    }
 
     public int randomNumberCreate(int minimum, int maximum) {
         int min = minimum;
