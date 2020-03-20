@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             "Text to Speech Example",
             "Find Animals Game",
             "Countdown Time with Start, Pause and Reset",
-            "south_korea",
+            "Playing Sounds and Music application",
             "turkey",
             "vietnam",
             "Test"
@@ -99,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
                     case 6:
                         startActivity(new Intent(MainActivity.this, ActivityCountdownTimer.class));
                         break;
+                    case 7:
+                        startActivity(new Intent(MainActivity.this, ActivityCountdownTimer.class));
+                        break;    
                     default:
                         break;
                 }
