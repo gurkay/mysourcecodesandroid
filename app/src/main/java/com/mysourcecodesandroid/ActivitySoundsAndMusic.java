@@ -16,13 +16,7 @@ public class ActivitySoundsAndMusic extends AppCompatActivity {
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
     private Button mButtonReset;
-    
-    private CountDownTimer mCountDownTimer;
-    
-    private boolean mTimerRunning;
-    
-    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
-    
+       
     Context context = this;
 
     @Override
