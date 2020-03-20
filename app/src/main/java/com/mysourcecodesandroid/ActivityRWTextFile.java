@@ -13,8 +13,9 @@ import android.widget.Toast;
 
 public class ActivityRWTextFile extends AppCompatActivity {
 
+    private static final String FILE_NAME = "level.txt";
     
-    private TextView mTextViewCountDown;
+    private EditText mTextViewCountDown;
     private Button mButtonStartPause;
     private Button mButtonReset;
     
