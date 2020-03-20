@@ -7,18 +7,21 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <ImageView
-        android:id="@+id/imgExample1"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:src="@mipmap/ic_launcher_flag_turkey"/>
-
-    <TextView
-        android:id="@+id/txtExample1"
+    <Button
+        android:id="@+id/btnPlayActivitySoundsAndMusic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="2dp"
-        android:text="@string/activity_example1_custom_toast_message"/>
+        android:text="Play"/>
+    <Button
+        android:id="@+id/btnPauseActivitySoundsAndMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pause"/>
+    <Button
+        android:id="@+id/btnStopActivitySoundsAndMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"/>
+    
 
 </LinearLayout>
