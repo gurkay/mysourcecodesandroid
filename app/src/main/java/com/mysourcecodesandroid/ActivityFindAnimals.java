@@ -150,6 +150,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
                                         Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
+                                useToImage(randomIntFindAnimal);
                                 //TableRow tableRow = new TableRow(context);
                                 tblRow3FirstRowFindAnimals.addView(imageView);
                                 count++;
@@ -162,6 +163,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
                                         Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
+
                                 //TableRow tableRow = new TableRow(context);
                                 tblRow3FirstRowFindAnimals.addView(imageView);
                                 count++;
@@ -178,6 +180,8 @@ public class ActivityFindAnimals extends AppCompatActivity {
                                         Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
+                                //use to image
+                                useToImage(randomIntFindAnimal);
                                 //TableRow tableRow = new TableRow(context);
                                 tblRow3SecondRowFindAnimals.addView(imageView);
                                 count++;
@@ -206,6 +210,8 @@ public class ActivityFindAnimals extends AppCompatActivity {
                                         Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
+                                //use to image
+                                useToImage(randomIntFindAnimal);
                                 //TableRow tableRow = new TableRow(context);
                                 tblRow3ThreeRowFindAnimals.addView(imageView);
                                 count++;
