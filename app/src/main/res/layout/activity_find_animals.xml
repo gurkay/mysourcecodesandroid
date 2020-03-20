@@ -96,12 +96,32 @@
         android:id="@+id/scrViewFindAnimals"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
+        <TableLayout
             android:id="@+id/tblRow3FindAnimals"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-        </LinearLayout>        
+            android:shrinkColumns="*">
+            <TableRow
+                android:id="@+id/tblRow3FirstRowFindAnimals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TableRow>
+            <TableRow
+                android:id="@+id/tblRow3SecondRowFindAnimals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TableRow>
+            <TableRow
+                android:id="@+id/tblRow3ThreeRowFindAnimals"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            </TableRow>
+            <TableRow
+                android:id="@+id/tblRow3FourRowFindAnimals"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+            </TableRow>
+        </TableLayout>
     </ScrollView>
 
 </LinearLayout>

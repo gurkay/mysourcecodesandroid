@@ -3,10 +3,19 @@ package com.mysourcecodesandroid;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Random;
 
 public class ActivityFindAnimals extends AppCompatActivity {
 
@@ -42,8 +51,11 @@ public class ActivityFindAnimals extends AppCompatActivity {
     };
 
     TextView txtQuestionFindAnimals;
-    ImageView imgPicturesOfQuestion0FindAnimals;
-    LinearLayout tblRow3FindAnimals;
+    TableRow tblRow3FirstRowFindAnimals, tblRow3SecondRowFindAnimals, tblRow3ThreeRowFindAnimals, tblRow3FourRowFindAnimals;
+    TableLayout tblRow3FindAnimals;
+    Context context = this;
+    int level = 4;
+    int randomIntFindAnimal, randomPlaceFindAnimal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,37 +69,172 @@ public class ActivityFindAnimals extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         txtQuestionFindAnimals = findViewById(R.id.txtQuestionFindAnimals);
-        imgPicturesOfQuestion0FindAnimals = findViewById(R.id.imgPicturesOfQuestion0FindAnimals);
-        
-        tblRow3FindAnimals.setVisibility(View.INVISIBLE);
-        
-        // take number of installment
-        int level = 1;
-        
-        if(level == 1) {
-            tblRow3FindAnimals.setVisibility(View.VISIBLE);
-            
-            // image view create
-            for (int i = 0; i < installment; i++) {
-                
-                CheckBox checkBox = new CheckBox(context);
-                checkBox.setText((i+1) + ". Taksit");
+        tblRow3FirstRowFindAnimals = findViewById(R.id.tblRow3FirstRowFindAnimals);
+        tblRow3SecondRowFindAnimals = findViewById(R.id.tblRow3SecondRowFindAnimals);
+        tblRow3ThreeRowFindAnimals = findViewById(R.id.tblRow3ThreeRowFindAnimals);
+        tblRow3FourRowFindAnimals = findViewById(R.id.tblRow3FourRowFindAnimals);
 
-                pnlInstallmentsExample0.addView(checkBox);
-            }
-            
-        }
-        
+
+
+        /**
+         * LEVEL 1
+         */
+
+
         txtQuestionFindAnimals.setText(questionFindAnimals[0]);
-        imgPicturesOfQuestion0FindAnimals.setImageResource(picturesFindAnimals[0]);
+
+        // take number of installment
+        // level = 1;
+
+        if (level == 1) {
+
+            // image view create
+            for (int i = 0; i < 2; i++) {
+                final ImageView imageView = new ImageView(context);
+                imageView.setId(i);
+                imageView.setImageResource(picturesFindAnimals[i]);
+
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                tblRow3FirstRowFindAnimals.addView(imageView);
+            }
+
+        }
+
+        /**
+         * LEVEL 4
+         */
+        // take number of installment
+        level = 4;
+
+        if (level == 4) {
+
+            randomIntFindAnimal = randomNumberCreate(0, 18);
+            txtQuestionFindAnimals.setText(questionFindAnimals[randomIntFindAnimal]);
+            randomPlaceFindAnimal = randomNumberCreate(0, 5);
+
+            int count = 0;
+            // image view create
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 2; j++) {
+                    int randomNumber = randomNumberCreate(0, 18);
+                    final ImageView imageView = new ImageView(context);
+
+                    switch (i) {
+                        case 0:
+
+                            if (count == randomPlaceFindAnimal) {
+                                imageView.setId(randomIntFindAnimal);
+                                imageView.setImageResource(picturesFindAnimals[randomIntFindAnimal]);
+                                imageView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                //TableRow tableRow = new TableRow(context);
+                                tblRow3FirstRowFindAnimals.addView(imageView);
+                                count++;
+                            } else {
+                                imageView.setId(randomNumber);
+                                imageView.setImageResource(picturesFindAnimals[randomNumber]);
+                                imageView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                //TableRow tableRow = new TableRow(context);
+                                tblRow3FirstRowFindAnimals.addView(imageView);
+                                count++;
+                            }
+
+                            break;
+                        case 1:
+                            if (count == randomPlaceFindAnimal) {
+                                imageView.setId(randomIntFindAnimal);
+                                imageView.setImageResource(picturesFindAnimals[randomIntFindAnimal]);
+                                imageView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                //TableRow tableRow = new TableRow(context);
+                                tblRow3SecondRowFindAnimals.addView(imageView);
+                                count++;
+                            } else {
+                                imageView.setId(randomNumber);
+                                imageView.setImageResource(picturesFindAnimals[randomNumber]);
+
+                                imageView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                //TableRow tableRow = new TableRow(context);
+                                tblRow3SecondRowFindAnimals.addView(imageView);
+                                count++;
+                            }
+                            break;
+                        case 2:
+                            if (count == randomPlaceFindAnimal) {
+                                imageView.setId(randomIntFindAnimal);
+                                imageView.setImageResource(picturesFindAnimals[randomIntFindAnimal]);
+                                imageView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                //TableRow tableRow = new TableRow(context);
+                                tblRow3ThreeRowFindAnimals.addView(imageView);
+                                count++;
+                            } else {
+                                imageView.setId(randomNumber);
+                                imageView.setImageResource(picturesFindAnimals[randomNumber]);
+
+                                imageView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Toast.makeText(context, "Message : " + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                //TableRow tableRow = new TableRow(context);
+                                tblRow3ThreeRowFindAnimals.addView(imageView);
+                                count++;
+                            }
+                            break;
+                    }
+
+                    Log.d("CONSOLE LOG TAG", "Right now here...! Gürkay BAŞYİĞİT continues find error :) Image get ID : " + imageView.getId());
+
+                }
+                Log.d("Gürkay CONSOLE LOG TAG", "count : " + count);
+            }
+
+        }
+
+    }
 
 
+    public int randomNumberCreate(int minimum, int maximum) {
+        int min = minimum;
+        int max = maximum;
+        int randomNumber = new Random().nextInt((max - min) + 1) + min;
+        return randomNumber;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
-        if(itemId == R.id.home) {
+        if (itemId == R.id.home) {
             this.finish();
         }
         return super.onOptionsItemSelected(item);
