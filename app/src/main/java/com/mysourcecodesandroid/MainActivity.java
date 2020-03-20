@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, ActivityCountdownTimer.class));
                         break;
                     case 7:
-                        startActivity(new Intent(MainActivity.this, ActivityCountdownTimer.class));
+                        startActivity(new Intent(MainActivity.this, ActivitySoundsAndMusic.class));
                         break;    
                     default:
                         break;
