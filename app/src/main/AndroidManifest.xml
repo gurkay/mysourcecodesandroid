@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ActivityRWTextFile"
+            android:parentActivityName=".MainActivity"></activity>        
+        <activity
             android:name=".ActivitySoundsAndMusic"
             android:parentActivityName=".MainActivity"></activity>
         <activity
