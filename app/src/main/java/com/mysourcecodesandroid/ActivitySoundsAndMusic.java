@@ -13,9 +13,10 @@ import android.widget.Toast;
 
 public class ActivitySoundsAndMusic extends AppCompatActivity {
     
-    private TextView mTextViewCountDown;
-    private Button mButtonStartPause;
-    private Button mButtonReset;
+    MediaPlayer player;
+    private Button btnPlayActivitySoundsAndMusic;
+    private Button btnPauseActivitySoundsAndMusic;
+    private Button btnStopActivitySoundsAndMusic;
        
     Context context = this;
 
@@ -33,16 +34,55 @@ public class ActivitySoundsAndMusic extends AppCompatActivity {
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
         
-        mButtonStartPause = findViewById(R.id.button_start_pause);
-        mButtonReset = findViewById(R.id.button_reset);
+        btnPlayActivitySoundsAndMusic = findViewById(R.id.btnPlayActivitySoundsAndMusic);
+        btnPauseActivitySoundsAndMusic = findViewById(R.id.btnPauseActivitySoundsAndMusic);
+        btnStopActivitySoundsAndMusic = findViewById(R.id.btnStopActivitySoundsAndMusic);
             
-        mButtonStartPause.setOnClickListener(new View.onClickListener() {
+        btnPlayActivitySoundsAndMusic.setOnClickListener(new View.onClickListener() {
           @Override
           public void onClick(View v) {
-
+            if(player == null) {
+                player = MediaPlayer.create(contex, R.raw.lion);
+                player.setOnCompletionListener(new MediaPlayer.onCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        stopPlayer();
+                    }
+                });
+            }
+              
+            player.start();
           }
         });
+        btnPauseActivitySoundsAndMusic.setOnClickListener(new View.onClickListener() {
+          @Override
+          public void onClick(View v) {
+            if(player != null) {
+                player.pause();
+            }
+          }
+        });
+        btnStopActivitySoundsAndMusic.setOnClickListener(new View.onClickListener() {
+          @Override
+          public void onClick(View v) {
+            stopPlayer();
+          }
+        });        
     }
+    
+    private void stopPlayer() {
+        if(player != null) {
+            player.release();
+            player = null;
+            Toast.makeText(contex, "MediaPlayer release", Toast.LENGTH_SHORT).show();
+        }    
+    }
+    
+    @Override
+    public void onStop() {
+        super.onStop();
+        stopPlayer();
+    }    
     
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
