@@ -23,7 +23,7 @@ public class ActivityRWTextFile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_countdown_timer);
+        setContentView(R.layout.activity_rw_textfile);
         init();
     }
 
