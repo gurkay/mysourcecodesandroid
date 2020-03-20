@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             "Find Animals Game",
             "Countdown Time with Start, Pause and Reset",
             "Playing Sounds and Music application",
-            "turkey",
+            "Read / Write Text File",
             "vietnam",
             "Test"
     };
@@ -101,7 +101,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 7:
                         startActivity(new Intent(MainActivity.this, ActivitySoundsAndMusic.class));
-                        break;    
+                        break;
+                    case 8:
+                        startActivity(new Intent(MainActivity.this, ActivityRWTextFile.class));
+                        break;                         
                     default:
                         break;
                 }
