@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             "Çalışma Zamanında(Programatik) Buton TextView Ekleme ve Buton Click Olayı",
             "Text to Speech Example",
             "Find Animals Game",
-            "romania",
+            "Countdown Time with Start, Pause and Reset",
             "south_korea",
             "turkey",
             "vietnam",
