@@ -4,16 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ActivitySoundsAndMusic extends AppCompatActivity {
     
     MediaPlayer player;
+    TextView mTextViewCountDown;
     private Button btnPlayActivitySoundsAndMusic;
     private Button btnPauseActivitySoundsAndMusic;
     private Button btnStopActivitySoundsAndMusic;
@@ -38,12 +41,12 @@ public class ActivitySoundsAndMusic extends AppCompatActivity {
         btnPauseActivitySoundsAndMusic = findViewById(R.id.btnPauseActivitySoundsAndMusic);
         btnStopActivitySoundsAndMusic = findViewById(R.id.btnStopActivitySoundsAndMusic);
             
-        btnPlayActivitySoundsAndMusic.setOnClickListener(new View.onClickListener() {
+        btnPlayActivitySoundsAndMusic.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
             if(player == null) {
-                player = MediaPlayer.create(contex, R.raw.lion);
-                player.setOnCompletionListener(new MediaPlayer.onCompletionListener() {
+                player = MediaPlayer.create(context, R.raw.lion);
+                player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
                         stopPlayer();
@@ -54,7 +57,7 @@ public class ActivitySoundsAndMusic extends AppCompatActivity {
             player.start();
           }
         });
-        btnPauseActivitySoundsAndMusic.setOnClickListener(new View.onClickListener() {
+        btnPauseActivitySoundsAndMusic.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
             if(player != null) {
@@ -62,7 +65,7 @@ public class ActivitySoundsAndMusic extends AppCompatActivity {
             }
           }
         });
-        btnStopActivitySoundsAndMusic.setOnClickListener(new View.onClickListener() {
+        btnStopActivitySoundsAndMusic.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
             stopPlayer();
@@ -74,7 +77,7 @@ public class ActivitySoundsAndMusic extends AppCompatActivity {
         if(player != null) {
             player.release();
             player = null;
-            Toast.makeText(contex, "MediaPlayer release", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "MediaPlayer release", Toast.LENGTH_SHORT).show();
         }    
     }
     

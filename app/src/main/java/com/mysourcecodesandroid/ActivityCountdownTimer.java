@@ -5,11 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 public class ActivityCountdownTimer extends AppCompatActivity {
 
@@ -44,7 +48,7 @@ public class ActivityCountdownTimer extends AppCompatActivity {
         mButtonStartPause = findViewById(R.id.button_start_pause);
         mButtonReset = findViewById(R.id.button_reset);
             
-        mButtonStartPause.setOnClickListener(new View.onClickListener() {
+        mButtonStartPause.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if(mTimerRunning) {
@@ -56,7 +60,7 @@ public class ActivityCountdownTimer extends AppCompatActivity {
         });
         
         
-        mButtonReset.setOnClickListener(new View.onClickListener() {
+        mButtonReset.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if(mTimerRunning) {

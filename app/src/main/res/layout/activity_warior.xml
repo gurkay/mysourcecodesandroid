@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:background="@drawable/tank4">
+
+    <ImageView
+        android:id="@+id/imgHome"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/play_tank" />
+    <ImageView
+        android:id="@+id/imgWeapon"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/imgHome"
+        android:layout_marginLeft="1dp"
+        android:src="@drawable/weapon7" />
+    <ImageView
+        android:id="@+id/imgPaint"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/imgWeapon"
+        android:layout_marginLeft="1dp"
+        android:src="@drawable/paint_tank" />
+    <ImageView
+        android:id="@+id/imgSetting"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/imgPaint"
+        android:layout_marginLeft="1dp"
+        android:src="@drawable/setting1" />
+
+</RelativeLayout>

@@ -11,13 +11,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class ActivityRWTextFile extends AppCompatActivity {
 
     private static final String FILE_NAME = "level.txt";
     
-    private EditText mTextViewCountDown;
-    private Button mButtonStartPause;
-    private Button mButtonReset;
+    EditText edEnterTextActivityRWTextFile;
+    Button btnSaveActivityRWTextFile, btnLoadActivityRWTextFile;
     
     Context context = this;
 
@@ -33,11 +39,77 @@ public class ActivityRWTextFile extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mTextViewCountDown = findViewById(R.id.text_view_countdown);
-        
-        mButtonStartPause = findViewById(R.id.button_start_pause);
-        mButtonReset = findViewById(R.id.button_reset);
-            
+        edEnterTextActivityRWTextFile = findViewById(R.id.edEnterTextActivityRWTextFile);
+
+        btnSaveActivityRWTextFile = findViewById(R.id.btnSaveActivityRWTextFile);
+        btnLoadActivityRWTextFile = findViewById(R.id.btnLoadActivityRWTextFile);
+
+        /**
+         * save button is click listener
+         */
+        btnSaveActivityRWTextFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = edEnterTextActivityRWTextFile.getText().toString();
+                FileOutputStream fos = null;
+
+                try {
+                    fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
+                    fos.write(text.getBytes());
+
+                    edEnterTextActivityRWTextFile.getText().clear();
+                    Toast.makeText(context, "Saved to" + getFilesDir() + "/" + FILE_NAME, Toast.LENGTH_LONG).show();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if(fos != null) {
+                        try {
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+
+        /**
+         * load button is click listener
+         */
+        btnLoadActivityRWTextFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FileInputStream fis = null;
+
+                try {
+                    fis = openFileInput(FILE_NAME);
+                    InputStreamReader isr = new InputStreamReader(fis);
+                    BufferedReader br = new BufferedReader(isr);
+                    StringBuilder sb = new StringBuilder();
+                    String text;
+
+                    while((text = br.readLine()) != null) {
+                        sb.append(text);
+                    }
+
+                    edEnterTextActivityRWTextFile.setText(sb.toString());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    if(fis != null) {
+                        try {
+                            fis.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
 
     }
 

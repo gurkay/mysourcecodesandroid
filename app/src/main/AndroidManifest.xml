@@ -10,17 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ActivityWarior"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".ActivityRWTextFile"
-            android:parentActivityName=".MainActivity"></activity>        
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivitySoundsAndMusic"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivityCountdownTimer"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivityFindAnimals"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivityTextToSpeech"
             android:parentActivityName=".MainActivity" />

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             "Countdown Time with Start, Pause and Reset",
             "Playing Sounds and Music application",
             "Read / Write Text File",
-            "vietnam",
+            "Tank Savaslari",
             "Test"
     };
     int pictures[] = {R.drawable.afghanistan, R.drawable.albania, R.drawable.algeria,
@@ -104,7 +104,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 8:
                         startActivity(new Intent(MainActivity.this, ActivityRWTextFile.class));
-                        break;                         
+                        break;
+                    case 9:
+                        startActivity(new Intent(MainActivity.this, ActivityWarior.class));
+                        break;
                     default:
                         break;
                 }
