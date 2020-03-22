@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -100,9 +101,9 @@ public class ActivityFindAnimals extends AppCompatActivity {
         tblLayoutFindAnimals = findViewById(R.id.tblLayoutFindAnimals);
 
 
-        //setGameLevel(1);
+        setGameLevel(1);
 
-        setGameLevel(getGameLevel());
+        //setGameLevel(getGameLevel());
 
         gameStart();
 
