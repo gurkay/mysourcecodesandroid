@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class ActivityCountdownTimer extends AppCompatActivity {
 
-    private static final long START_TIME_IN_MILLIS = 600000;
+    private static final long START_TIME_IN_MILLIS = 60000;
     
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
@@ -81,7 +81,7 @@ public class ActivityCountdownTimer extends AppCompatActivity {
             }
             @Override
             public void onFinish() {
-                mTimerRunning = false;
+                mTimerRunning = true;
                 mButtonStartPause.setText("Start");
                 mButtonStartPause.setVisibility(View.INVISIBLE);
                 mButtonReset.setVisibility(View.VISIBLE);

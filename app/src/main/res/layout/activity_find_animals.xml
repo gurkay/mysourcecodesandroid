@@ -56,26 +56,26 @@
             android:id="@+id/imgViewCheck0FindAnimals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_check_trans"
+            android:src="@mipmap/ic_launcher_incheck_trans"
             android:layout_marginLeft="50dp"/>
         <ImageView
-            android:id="@+id/imgViewinCheck0FindAnimals"
+            android:id="@+id/imgViewCheck1FindAnimals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_launcher_incheck_trans"/>
 
         <ImageView
-            android:id="@+id/imgViewCheck1FindAnimals"
+            android:id="@+id/imgViewCheck2FindAnimals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_check_trans"/>
+            android:src="@mipmap/ic_launcher_incheck_trans"/>
 
         <TextView
             android:id="@+id/txtNumberOfTimerFindAnimals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1"
-            android:layout_marginLeft="80dp"
+            android:text="00"
+            android:layout_marginLeft="100dp"
             android:textSize="25sp"/>
 
     </LinearLayout>
@@ -97,30 +97,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TableLayout
-            android:id="@+id/tblRow3FindAnimals"
+            android:id="@+id/tblLayoutFindAnimals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:shrinkColumns="*">
-            <TableRow
-                android:id="@+id/tblRow3FirstRowFindAnimals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TableRow>
-            <TableRow
-                android:id="@+id/tblRow3SecondRowFindAnimals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TableRow>
-            <TableRow
-                android:id="@+id/tblRow3ThreeRowFindAnimals"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-            </TableRow>
-            <TableRow
-                android:id="@+id/tblRow3FourRowFindAnimals"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-            </TableRow>
+
         </TableLayout>
     </ScrollView>
 
