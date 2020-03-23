@@ -30,44 +30,52 @@ import java.util.Random;
 public class ActivityFindAnimals extends AppCompatActivity {
 
     String questionFindAnimals[] = {
-            "Find the bald eagle, bald eagle makes sound...!",
-            "Find the bear, bear makes sound...!",
-            "Find the beluga whale, beluga whale makes sound...!",
-            "Find the cat, cat makes sound...!",
-            "Find the jaguar, jaguar makes sound...!",
-            "Find the killer whale, killer whale makes sound...!",
-            "Find the lion, lion makes sound...!",
-            "Find the penguin, penguin makes sound...!",
-            "Find the sea lion, sea lion makes sound...!",
-            "Find the pig, pig makes sound...!",
-            "Find the gray wolf, gray wolf makes sound...!",
-            "Find the leopard, leopard makes sound...!",
-            "Find the frog, frog makes sound...!",
-            "Find the hippo, hippo makes sound...!",
-            "Find the chimps, chimps makes sound...!",
+            "Find the bear, bear makes sound growlll",
+            "Find the cat, cat makes sound meowww",
+            "Find the chick, chick makes sound cikcik",
+            "Find the cow, cow makes sound mowwww",
+            "Find the crocodile, crocodile makes sound...!",
+            "Find the dog, dog makes sound havhav",
+            "Find the donkey, donkey makes sound aiiiaiii",
+            "Find the duck, duck makes sound virak virak",
             "Find the elephant, elephant makes sound...!",
-            "Find the bengal tiger, bengal tiger makes sound...!",
-            "Find the dolphin, dolphin makes sound...!",
-            "Find the dog, dog makes sound...!"
+            "Find the frog, frog makes sound...!",
+            "Find the giraffe, giraffe makes sound...!",
+            "Find the goat, goat makes sound meaameeaa",
+            "Find the hippo, hippo makes sound...!",
+            "Find the koala, koala makes sound...!",
+            "Find the lemurs, lemurs makes sound...!",
+            "Find the lion, lion makes sound roarrrr",
+            "Find the monkey, monkey makes sound...!",
+            "Find the mouse, mouse makes sound...!",
+            "Find the panda, panda makes sound...!",
+            "Find the penguin, penguin makes sound...!",
+            "Find the pig, pig makes sound...!",
+            "Find the polar bear, polar bear makes sound...!",
+            "Find the porky, porky makes sound...!",
+            "Find the rabbit, rabbit makes sound...!",
+            "Find the raccoon, raccoon makes sound...!",
+            "Find the sheep, sheep makes sound meeemeeee"
     };
 
     int picturesFindAnimals[] = {
-            R.drawable.bald_eagle, R.drawable.bear, R.drawable.beluga_whale,
-            R.drawable.cat, R.drawable.jaguar, R.drawable.killer_whale,
-            R.drawable.lion, R.drawable.penguin, R.drawable.sea_lion,
-            R.drawable.pig, R.drawable.gray_wolf, R.drawable.leopard,
-            R.drawable.frog, R.drawable.hippo, R.drawable.chimps, R.drawable.elephant,
-            R.drawable.bengal_tiger, R.drawable.dolphin, R.drawable.dog
+            R.drawable.bear, R.drawable.cat, R.drawable.chick, R.drawable.cow, R.drawable.crocodile,
+            R.drawable.dog, R.drawable.donkey, R.drawable.duck, R.drawable.elephant, R.drawable.frog,
+            R.drawable.giraffe, R.drawable.goat, R.drawable.hippo, R.drawable.koala, R.drawable.lemurs,
+            R.drawable.lion, R.drawable.monkey, R.drawable.mouse, R.drawable.panda, R.drawable.penguin,
+            R.drawable.pig, R.drawable.polar_bear, R.drawable.porky, R.drawable.rabbit,
+            R.drawable.raccoon, R.drawable.sheep
     };
 
     String[] useImage = {
-            "false", "false", "false", "false", "false", "false", "false", "false", "false",
-            "false", "false", "false", "false", "false", "false", "false", "false", "false",
-            "false"
+            "false", "false", "false", "false", "false", "false", "false", "false", "false", "false",
+            "false", "false", "false", "false", "false", "false", "false", "false", "false", "false",
+            "false", "false", "false", "false", "false", "false"
     };
 
     private static final String FILE_NAME = "level.txt";
 
+    LinearLayout linearLayoutVerticalFindAnimals;
     TextView txtQuestionFindAnimals, txtNumberOfLevelFindAnimals, txtNumberOfTimerFindAnimals;
     ImageView imgViewCheck0FindAnimals, imgViewCheck1FindAnimals, imgViewCheck2FindAnimals;
     TableLayout tblLayoutFindAnimals;
@@ -99,19 +107,19 @@ public class ActivityFindAnimals extends AppCompatActivity {
         imgViewCheck2FindAnimals = findViewById(R.id.imgViewCheck2FindAnimals);
         txtNumberOfTimerFindAnimals = findViewById(R.id.txtNumberOfTimerFindAnimals);
         tblLayoutFindAnimals = findViewById(R.id.tblLayoutFindAnimals);
+        linearLayoutVerticalFindAnimals = findViewById(R.id.linearLayoutVerticalFindAnimals);
 
-
-        setGameLevel(1);
-
-        //setGameLevel(getGameLevel());
+        setGameLevel(getGameLevel());
 
         gameStart();
 
 
     }
+
     public long getmTimeLeftInMillis() {
         return mTimeLeftInMillis;
     }
+
     public int getNumberOfRandomPlaceFindAnimal() {
         return numberOfRandomPlaceFindAnimal;
     }
@@ -119,6 +127,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
     public void setNumberOfRandomPlaceFindAnimal(int numberOfRandomPlaceFindAnimal) {
         this.numberOfRandomPlaceFindAnimal = numberOfRandomPlaceFindAnimal;
     }
+
     public int getNumberOfCheckAnswer() {
         return this.numberOfCheckAnswer;
     }
@@ -150,19 +159,19 @@ public class ActivityFindAnimals extends AppCompatActivity {
                 }
             }
         }
-        if(this.gameLevel == 1) {
+        if (this.gameLevel == 1) {
             setNumberOfRandomPlaceFindAnimal(1);
             mTimeLeftInMillis = 20000;
-        } else if(this.gameLevel == 2) {
+        } else if (this.gameLevel == 2) {
             setNumberOfRandomPlaceFindAnimal(2);
             mTimeLeftInMillis = 17000;
-        } else if(this.gameLevel == 3) {
+        } else if (this.gameLevel == 3) {
             setNumberOfRandomPlaceFindAnimal(2);
             mTimeLeftInMillis = 14000;
-        } else if(this.gameLevel == 4) {
+        } else if (this.gameLevel == 4) {
             setNumberOfRandomPlaceFindAnimal(3);
             mTimeLeftInMillis = 11000;
-        } else if(this.gameLevel == 5) {
+        } else if (this.gameLevel == 5) {
             setNumberOfRandomPlaceFindAnimal(4);
             mTimeLeftInMillis = 8000;
         }
@@ -212,7 +221,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
         imgViewCheck1FindAnimals.setImageResource(R.mipmap.ic_launcher_incheck_trans);
         imgViewCheck2FindAnimals.setImageResource(R.mipmap.ic_launcher_incheck_trans);
         tblLayoutFindAnimals.removeAllViews();
-        for(int i=0; i < this.useImage.length; i++) {
+        for (int i = 0; i < this.useImage.length; i++) {
             this.useImage[i] = "false";
         }
         resetTimer();
@@ -222,7 +231,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
      * if correct answer
      */
     public void correctAnswer(int corAnswer) {
-
+         //setGameLevel(1);
         if (corAnswer == 1) {
             imgViewCheck0FindAnimals.setImageResource(R.mipmap.ic_launcher_check_trans);
             tblLayoutFindAnimals.removeAllViews();
@@ -231,21 +240,47 @@ public class ActivityFindAnimals extends AppCompatActivity {
             imgViewCheck1FindAnimals.setImageResource(R.mipmap.ic_launcher_check_trans);
             tblLayoutFindAnimals.removeAllViews();
         }
-        if (corAnswer == 3) {
-            imgViewCheck2FindAnimals.setImageResource(R.mipmap.ic_launcher_check_trans);
-            tblLayoutFindAnimals.removeAllViews();
-            setNumberOfCheckAnswer(0);
-            setGameLevel(getGameLevel()+1);
-            gameRestart();
 
-            String level = Integer.toString(getGameLevel());
-            Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalLevelMessage.class);
-            intent.putExtra("level", level);
-            intent.putExtra("timer", getmTimeLeftInMillis());
-            startActivity(intent);
+        if (corAnswer == 3) {
+            final Waiter waiter = new Waiter(getMainLooper(), 1000, 1000);
+            waiter.setWaitListener(new WaitListener() {
+
+                @Override
+                public void checkCondition() {
+                    Log.i("Connection", "Checking connection...");
+                    imgViewCheck2FindAnimals.setImageResource(R.mipmap.ic_launcher_check_trans);
+                }
+
+                @Override
+                public void onWaitEnd() {
+                    Log.i("Connection", "No connection for sending");
+                    //DO
+                    setNumberOfCheckAnswer(0);
+                    setGameLevel(getGameLevel() + 1);
+                    gameRestart();
+
+                    String level = Integer.toString(getGameLevel());
+                    Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalLevelMessage.class);
+                    intent.putExtra("level", level);
+                    intent.putExtra("timer", getmTimeLeftInMillis());
+                    startActivity(intent);
+
+                }
+
+                @Override
+                public void onConditionSuccess() {
+                    Log.i("Connection", "Connection success, sending...");
+                    //DO
+
+                    tblLayoutFindAnimals.removeAllViews();
+                }
+
+            });
+
+            waiter.start();
         }
 
-        if(corAnswer < 3 || corAnswer < 0) {
+        if (corAnswer < 3 || corAnswer < 0) {
             gameStart();
         }
 
@@ -302,8 +337,6 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
     /**
      * GET LEVEL STATE
-     *
-     *
      */
     public void getLevelState() {
         int count = 0;
@@ -316,8 +349,12 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
         // image view create
         for (int i = 0; i < getNumberOfRandomPlaceFindAnimal(); i++) {
+
             TableRow tableRow = new TableRow(context);
+
             for (int j = 0; j < 2; j++) {
+
+
                 int randomNumber = randomNumberCreate(0, 18);
                 // Use to image
                 while (useToImage(randomNumber) == true) {
@@ -340,7 +377,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
                     useToImage(randomIntFindAnimal);
 
-                    tableRow.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                    imageView.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                     tableRow.addView(imageView);
                     count++;
                 } else {
@@ -357,8 +394,9 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
                         }
                     });
+                    useToImage(randomIntFindAnimal);
 
-                    tableRow.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                    imageView.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                     tableRow.addView(imageView);
                     count++;
                 }
@@ -388,6 +426,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
     /**
      * USE TO IMAGE RANDOM
+     *
      * @param imageId
      * @return
      */
@@ -406,6 +445,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
     /**
      * TANDOM NAMBER GENERATE
+     *
      * @param minimum
      * @param maximum
      * @return
