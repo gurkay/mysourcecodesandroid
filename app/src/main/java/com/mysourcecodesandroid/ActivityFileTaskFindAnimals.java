@@ -3,6 +3,10 @@ package com.mysourcecodesandroid;
 import android.os.Handler;
 import android.os.Looper;
 
+public class ActivityFileTaskFindAnimals {
+    
+}
+
 public class Waiter {
     WaitListener waitListener;
     int waitTime = 0;
