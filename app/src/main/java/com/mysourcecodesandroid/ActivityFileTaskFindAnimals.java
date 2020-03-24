@@ -3,8 +3,13 @@ package com.mysourcecodesandroid;
 import android.os.Handler;
 import android.os.Looper;
 
-public class ActivityFileTaskFindAnimals {
+public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTaskListener {
+    FileTaskListener fileTaskListener;
+    String levelFileNameFindAnimals = "levelFileNameFindAnimals.txt";
     
+    public ActivityFileTaskFindAnimals(final String levelFileNameFindAnimals) {
+        this.levelFileNameFindAnimals = levelFileNameFindAnimals;
+    }
 }
 
 public class Waiter {
