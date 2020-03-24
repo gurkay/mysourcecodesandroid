@@ -1,7 +1,7 @@
 package com.mysourcecodesandroid;
 
 public interface FileTaskListener {
-    public void checkCondition();
-    public void onWaitEnd();
-    public void onConditionSuccess();
+    public void loadFileLevelOfFindAnimals(); // checkCondition();
+    public void saveFileLevelOfFindAnimals(); // onWaitEnd();
+    // public void onConditionSuccess();
 }
