@@ -11,8 +11,30 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
         this.levelFileNameFindAnimals = levelFileNameFindAnimals;
     }
     
-    public void seFileTaskListener() {
+    public void seFileTaskListener(FileTaskListener fileTaskListener) {
+        this.fileTaskListener = fileTaskListener;
+    }
     
+    public void saveFileLevelOfFindAnimals() {
+    
+        FileOutputStream fos = null;
+
+        try {
+            fos = openFileOutput(levelFileNameFindAnimals, MODE_PRIVATE);
+            fos.write(Integer.toString(this.gameLevel).getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }    
     }
 }
 
