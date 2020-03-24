@@ -10,6 +10,10 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
     public ActivityFileTaskFindAnimals(final String levelFileNameFindAnimals) {
         this.levelFileNameFindAnimals = levelFileNameFindAnimals;
     }
+    
+    public void seFileTaskListener() {
+    
+    }
 }
 
 public class Waiter {
