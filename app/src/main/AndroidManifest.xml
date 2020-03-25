@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityFindAnimalTimeFinish"
+        <activity android:name=".ActivityMainFindAnimals"></activity>
+        <activity
+            android:name=".ActivityFindAnimalTimeFinish"
             android:parentActivityName=".ActivityFindAnimals" />
-        <activity android:name=".ActivityFindAnimalLevelMessage"
+        <activity
+            android:name=".ActivityFindAnimalLevelMessage"
             android:parentActivityName=".ActivityFindAnimals" />
         <activity
             android:name=".ActivityWarior"
@@ -27,7 +30,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivityFindAnimals"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".ActivityMainFindAnimals" />
         <activity
             android:name=".ActivityTextToSpeech"
             android:parentActivityName=".MainActivity" />

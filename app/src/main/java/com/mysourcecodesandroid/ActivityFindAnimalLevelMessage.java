@@ -23,7 +23,7 @@ public class ActivityFindAnimalLevelMessage extends AppCompatActivity {
         btnFindAnimalsLevelMessage = findViewById(R.id.btnFindAnimalsLevelMessage);
 
         txtLevelFindAnimalsLevelMessage.setText("LEVEL " + getIntent().getExtras().getString("level"));
-        txtTimerFindAnimalsLevelMessage.setText("Start Time In Millis" + getIntent().getExtras().getString("timer"));
+        txtTimerFindAnimalsLevelMessage.setText("Start Time In Millis " + getIntent().getExtras().getString("timer"));
 
         btnFindAnimalsLevelMessage.setOnClickListener(new View.OnClickListener() {
             @Override

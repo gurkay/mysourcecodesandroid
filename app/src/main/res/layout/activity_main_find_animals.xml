@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LEVELS"
+        android:textSize="45sp"
+        />
+
+    <Button
+        android:id="@+id/btnLevel1MainFindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 1"/>
+    <Button
+        android:id="@+id/btnLevel2MainFindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 1"/>
+    <Button
+        android:id="@+id/btnLevel3MainFindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 1"/>
+    <Button
+        android:id="@+id/btnLevel4MainFindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 1"/>
+    <Button
+        android:id="@+id/btnLevel5MainFindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 1"/>
+
+</LinearLayout>

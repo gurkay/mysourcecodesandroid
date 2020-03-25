@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, ActivityTextToSpeech.class));
                         break;
                     case 5:
-                        startActivity(new Intent(MainActivity.this, ActivityFindAnimals.class));
+                        startActivity(new Intent(MainActivity.this, ActivityMainFindAnimals.class));
                         break;
                     case 6:
                         startActivity(new Intent(MainActivity.this, ActivityCountdownTimer.class));

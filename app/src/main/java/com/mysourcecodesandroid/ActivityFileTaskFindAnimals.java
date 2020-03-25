@@ -1,27 +1,101 @@
 package com.mysourcecodesandroid;
 
-import android.os.Handler;
-import android.os.Looper;
+import android.app.Activity;
+import android.content.Context;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTaskListener {
-    FileTaskListener fileTaskListener;
-    String levelFileNameFindAnimals = "levelFileNameFindAnimals.txt";
-    
-    public ActivityFileTaskFindAnimals(final String levelFileNameFindAnimals) {
-        this.levelFileNameFindAnimals = levelFileNameFindAnimals;
+
+    ActivityInterfaceAll.FileTaskListener fileTaskListener;
+    Context context;
+    private String FILE_NAME_LEVEL = "level.txt";
+    private boolean fileStateFindAnimals;
+    private int gameLevel;
+
+    public ActivityFileTaskFindAnimals(Context context, String fileNameLevel, int gameLevel) {
+        this.context = context;
+        this.FILE_NAME_LEVEL = fileNameLevel;
+        this.gameLevel = gameLevel;
     }
-    
-    public void seFileTaskListener(FileTaskListener fileTaskListener) {
+
+    public boolean isFileStateFindAnimals() {
+        return fileStateFindAnimals;
+    }
+
+    public void setFileStateFindAnimals(boolean fileStateFindAnimals) {
+        this.fileStateFindAnimals = fileStateFindAnimals;
+    }
+
+    public int getGameLevel() {
+        return gameLevel;
+    }
+
+    public void setGameLevel(int gameLevel) {
+        this.gameLevel = gameLevel;
+    }
+
+    public void seFileTaskListener(ActivityInterfaceAll.FileTaskListener fileTaskListener) {
         this.fileTaskListener = fileTaskListener;
     }
-    
+
+    @Override
+    public void loadFileLevelOfFindAnimals() {
+        FileInputStream fis = null;
+
+        try {
+            fis = context.openFileInput(FILE_NAME_LEVEL);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
+
+            while((text = br.readLine()) != null) {
+                sb.append(text);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void checkFileStateFindAnimals() {
+
+        FileInputStream fis = null;
+
+        try {
+            fis = context.openFileInput(FILE_NAME_LEVEL);
+            setFileStateFindAnimals(true);
+        } catch (FileNotFoundException e) {
+            setFileStateFindAnimals(false);
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void saveFileLevelOfFindAnimals() {
     
         FileOutputStream fos = null;
 
         try {
-            fos = openFileOutput(levelFileNameFindAnimals, MODE_PRIVATE);
-            fos.write(Integer.toString(this.gameLevel).getBytes());
+            fos = context.openFileOutput(FILE_NAME_LEVEL, context.MODE_PRIVATE);
+            fos.write(Integer.toString(getGameLevel()).getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -35,58 +109,5 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
                 }
             }
         }    
-    }
-}
-
-public class Waiter {
-    WaitListener waitListener;
-    int waitTime = 0;
-    Handler handler;
-    int waitStep = 1000;
-    int maxWaitTime = 5000;
-    boolean condition = false;
-
-    public Waiter(Looper looper, final int waitStep, final int maxWaitTime){
-
-        handler = new Handler(looper);
-        this.waitStep = waitStep;
-        this.maxWaitTime = maxWaitTime;
-
-    }
-
-    public void start(){
-
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-
-                waitListener.checkCondition();
-
-                if (condition) {
-
-                    waitListener.onConditionSuccess();
-
-                } else {
-                    if (waitTime <= maxWaitTime) {
-
-                        waitTime += waitStep;
-                        handler.postDelayed(this, waitStep);
-
-                    } else {
-
-                        waitListener.onWaitEnd();
-                    }
-                }
-            }
-        });
-
-    }
-
-    public void setConditionState(boolean condition){
-        this.condition = condition;
-    }
-
-    public void setWaitListener(WaitListener waitListener){
-        this.waitListener = waitListener;
     }
 }

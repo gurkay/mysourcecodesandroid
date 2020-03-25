@@ -93,7 +93,10 @@ public class ActivityFindAnimals extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_animals);
+
+
         init();
+
 
     }
 
@@ -109,7 +112,12 @@ public class ActivityFindAnimals extends AppCompatActivity {
         tblLayoutFindAnimals = findViewById(R.id.tblLayoutFindAnimals);
         linearLayoutVerticalFindAnimals = findViewById(R.id.linearLayoutVerticalFindAnimals);
 
-        setGameLevel(getGameLevel());
+
+        this.gameLevel = Integer.parseInt(getIntent().getExtras().getString("gameLevel"));
+        this.mTimeLeftInMillis = Long.parseLong(getIntent().getExtras().getString("gameTimer"));
+        this.numberOfRandomPlaceFindAnimal = Integer.parseInt(getIntent().getExtras().getString("numberOfRandomPlaceFindAnimal"));
+
+        txtNumberOfLevelFindAnimals.setText(Integer.toString(this.gameLevel));
 
         gameStart();
 
@@ -120,14 +128,6 @@ public class ActivityFindAnimals extends AppCompatActivity {
         return mTimeLeftInMillis;
     }
 
-    public int getNumberOfRandomPlaceFindAnimal() {
-        return numberOfRandomPlaceFindAnimal;
-    }
-
-    public void setNumberOfRandomPlaceFindAnimal(int numberOfRandomPlaceFindAnimal) {
-        this.numberOfRandomPlaceFindAnimal = numberOfRandomPlaceFindAnimal;
-    }
-
     public int getNumberOfCheckAnswer() {
         return this.numberOfCheckAnswer;
     }
@@ -136,12 +136,12 @@ public class ActivityFindAnimals extends AppCompatActivity {
         this.numberOfCheckAnswer = numberOfCheckAnswer;
     }
 
-    /**
+    /*    *//**
      * Game level file write with setGameLevel
-     */
+     *//*
     public void setGameLevel(int gLevel) {
         this.gameLevel = gLevel;
-        FileOutputStream fos = null;
+*//*        FileOutputStream fos = null;
 
         try {
             fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
@@ -158,33 +158,19 @@ public class ActivityFindAnimals extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        }
-        if (this.gameLevel == 1) {
-            setNumberOfRandomPlaceFindAnimal(1);
-            mTimeLeftInMillis = 20000;
-        } else if (this.gameLevel == 2) {
-            setNumberOfRandomPlaceFindAnimal(2);
-            mTimeLeftInMillis = 17000;
-        } else if (this.gameLevel == 3) {
-            setNumberOfRandomPlaceFindAnimal(2);
-            mTimeLeftInMillis = 14000;
-        } else if (this.gameLevel == 4) {
-            setNumberOfRandomPlaceFindAnimal(3);
-            mTimeLeftInMillis = 11000;
-        } else if (this.gameLevel == 5) {
-            setNumberOfRandomPlaceFindAnimal(4);
-            mTimeLeftInMillis = 8000;
-        }
+        }*//*
 
-        txtNumberOfLevelFindAnimals.setText(Integer.toString(getGameLevel()));
+
     }
+
+    */
 
     /**
      * Game level file read with getGameLevel
-     */
+     *//*
     public int getGameLevel() {
 
-        FileInputStream fis = null;
+*//*        FileInputStream fis = null;
         try {
             fis = openFileInput(FILE_NAME);
             InputStreamReader isr = new InputStreamReader(fis);
@@ -210,11 +196,10 @@ public class ActivityFindAnimals extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        }
+        }*//*
 
         return this.gameLevel;
-    }
-
+    }*/
     public void gameRestart() {
         setNumberOfCheckAnswer(0);
         imgViewCheck0FindAnimals.setImageResource(R.mipmap.ic_launcher_incheck_trans);
@@ -231,7 +216,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
      * if correct answer
      */
     public void correctAnswer(int corAnswer) {
-         //setGameLevel(1);
+        //setGameLevel(1);
         if (corAnswer == 1) {
             imgViewCheck0FindAnimals.setImageResource(R.mipmap.ic_launcher_check_trans);
             tblLayoutFindAnimals.removeAllViews();
@@ -247,21 +232,19 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
                 @Override
                 public void checkCondition() {
-                    Log.i("Connection", "Checking connection...");
                     imgViewCheck2FindAnimals.setImageResource(R.mipmap.ic_launcher_check_trans);
                 }
 
                 @Override
                 public void onWaitEnd() {
-                    Log.i("Connection", "No connection for sending");
                     //DO
                     setNumberOfCheckAnswer(0);
-                    setGameLevel(getGameLevel() + 1);
+
                     gameRestart();
 
-                    String level = Integer.toString(getGameLevel());
+                    String level = Integer.toString(gameLevel);
                     Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalLevelMessage.class);
-                    intent.putExtra("level", level);
+                    intent.putExtra("gameLevel", gameLevel);
                     intent.putExtra("timer", getmTimeLeftInMillis());
                     startActivity(intent);
 
@@ -269,7 +252,6 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
                 @Override
                 public void onConditionSuccess() {
-                    Log.i("Connection", "Connection success, sending...");
                     //DO
 
                     tblLayoutFindAnimals.removeAllViews();
@@ -300,8 +282,6 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
-                Log.d("Gürkay CONSOLE LOG TAG", "TIMER : " + getmTimeLeftInMillis());
 
             }
         }.start();
@@ -343,12 +323,12 @@ public class ActivityFindAnimals extends AppCompatActivity {
         randomIntFindAnimal = randomNumberCreate(0, 18);
         txtQuestionFindAnimals.setText(questionFindAnimals[randomIntFindAnimal]);
 
-        randomPlaceFindAnimal = randomNumberCreate(0, getNumberOfRandomPlaceFindAnimal());
+        randomPlaceFindAnimal = randomNumberCreate(0, numberOfRandomPlaceFindAnimal);
 
         Log.d("Gürkay CONSOLE LOG TAG", "TIMER : " + getmTimeLeftInMillis());
 
         // image view create
-        for (int i = 0; i < getNumberOfRandomPlaceFindAnimal(); i++) {
+        for (int i = 0; i < numberOfRandomPlaceFindAnimal; i++) {
 
             TableRow tableRow = new TableRow(context);
 
@@ -401,9 +381,9 @@ public class ActivityFindAnimals extends AppCompatActivity {
                     count++;
                 }
 
-                Log.d("CONSOLE LOG TAG", "Right now here...! Gürkay BAŞYİĞİT continues find error :) Image get ID : " + imageView.getId());
+
             }
-            Log.d("Gürkay CONSOLE LOG TAG", "count : " + count);
+
             tblLayoutFindAnimals.addView(tableRow);
         }
 
