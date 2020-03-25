@@ -88,7 +88,10 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
         btnLevel4MainFindAnimals = findViewById(R.id.btnLevel4MainFindAnimals);
         btnLevel5MainFindAnimals = findViewById(R.id.btnLevel5MainFindAnimals);
 
-        myLogTrace = new MyLogTrace(getApplicationContext(), "logTraceFindAnimals.txt");
+        if(chkFileStateFindAnimals("logTraceFindAnimals.txt")) {
+            myLogTrace = new MyLogTrace(getApplicationContext(), "logTraceFindAnimals.txt");
+        }
+
 
 
         try {
