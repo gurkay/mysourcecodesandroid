@@ -178,10 +178,14 @@ public class ActivityFindAnimals extends AppCompatActivity {
                     setNumberOfCheckAnswer(0);
 
                     gameRestart();
-                    if(gameLevel < 5) {
+                    if(gameLevel == 1) {
                         gameLevel++;
-                    } else {
-                        gameLevel = 5;
+                    } else if(gameLevel == 2){
+                        gameLevel++;
+                    } else if(gameLevel == 3){
+                        gameLevel++;
+                    } else if(gameLevel == 4){
+                        gameLevel++;
                     }
 
                     activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), gameLevel);
@@ -190,6 +194,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
                     intent.putExtra("gameLevel", Integer.toString(gameLevel));
                     intent.putExtra("mTimeLeftInMillis", Long.toString(mTimeLeftInMillis));
                     startActivity(intent);
+                    finish();
                 }
 
                 @Override
@@ -315,6 +320,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalTimeFinish.class);
                             intent.putExtra("gameLevel", Integer.toString(gameLevel));
                             startActivity(intent);
+                            finish();
 
                         }
                     });

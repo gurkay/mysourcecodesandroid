@@ -11,11 +11,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ActivityMainFindAnimals"></activity>
         <activity
-            android:name=".ActivityFindAnimalTimeFinish"
-            android:parentActivityName=".ActivityFindAnimals" />
+            android:name=".ActivityFindAnimalTimeFinish"/>
         <activity
-            android:name=".ActivityFindAnimalLevelMessage"
-            android:parentActivityName=".ActivityFindAnimals" />
+            android:name=".ActivityFindAnimalLevelMessage"/>
         <activity
             android:name=".ActivityWarior"
             android:parentActivityName=".MainActivity" />

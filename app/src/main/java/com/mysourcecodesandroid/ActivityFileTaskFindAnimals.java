@@ -15,14 +15,20 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
     ActivityInterfaceAll.FileTaskListener fileTaskListener;
     Context context;
     private String FILE_NAME_LEVEL = "level.txt";
-    private boolean fileStateFindAnimals = false;
-    private int gameLevel = 1;
+    private boolean fileStateFindAnimals;
+    private int gameLevel;
 
     public ActivityFileTaskFindAnimals(Context context) {
-        this.context = context;
-        this.FILE_NAME_LEVEL = "level.txt";
-        this.fileStateFindAnimals = true;
-        saveFileLevelOfFindAnimals();
+        checkFileStateFindAnimals();
+        if(isFileStateFindAnimals()) {
+            loadFileLevelOfFindAnimals();
+        } else {
+            this.context = context;
+            this.fileStateFindAnimals = true;
+            this.gameLevel = 1;
+            saveFileLevelOfFindAnimals();
+        }
+
     }
 
     public ActivityFileTaskFindAnimals(Context context, int gameLevel) {
@@ -99,6 +105,10 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
 
         try {
             fis = context.openFileInput(FILE_NAME_LEVEL);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
             setFileStateFindAnimals(true);
         } catch (FileNotFoundException e) {
             setFileStateFindAnimals(false);
