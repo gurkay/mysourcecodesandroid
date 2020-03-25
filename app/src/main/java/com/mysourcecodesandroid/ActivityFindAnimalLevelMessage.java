@@ -22,13 +22,15 @@ public class ActivityFindAnimalLevelMessage extends AppCompatActivity {
         txtTimerFindAnimalsLevelMessage = findViewById(R.id.txtTimerFindAnimalsLevelMessage);
         btnFindAnimalsLevelMessage = findViewById(R.id.btnFindAnimalsLevelMessage);
 
-        txtLevelFindAnimalsLevelMessage.setText("LEVEL " + getIntent().getExtras().getString("level"));
-        txtTimerFindAnimalsLevelMessage.setText("Start Time In Millis " + getIntent().getExtras().getString("timer"));
+        txtLevelFindAnimalsLevelMessage.setText("LEVEL " + getIntent().getExtras().getString("gameLevel"));
+        txtTimerFindAnimalsLevelMessage.setText("Start Time In Millis " + getIntent().getExtras().getString("mTimeLeftInMillis"));
 
         btnFindAnimalsLevelMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ActivityFindAnimals.class));
+                Intent intent = new Intent(getApplicationContext(), ActivityMainFindAnimals.class);
+                intent.putExtra("gameLevel", getIntent().getExtras().getString("gameLevel"));
+                startActivity(intent);
             }
         });
 

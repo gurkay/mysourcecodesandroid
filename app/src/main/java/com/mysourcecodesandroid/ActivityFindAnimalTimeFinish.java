@@ -21,7 +21,9 @@ public class ActivityFindAnimalTimeFinish extends AppCompatActivity {
         btnFindAnimalTimeFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ActivityFindAnimals.class));
+                Intent intent = new Intent(getApplicationContext(), ActivityMainFindAnimals.class);
+                intent.putExtra("gameLevel", getIntent().getExtras().getString("gameLevel"));
+                startActivity(intent);
             }
         });
 

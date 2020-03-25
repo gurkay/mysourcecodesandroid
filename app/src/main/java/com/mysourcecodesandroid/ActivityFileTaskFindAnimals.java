@@ -15,13 +15,29 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
     ActivityInterfaceAll.FileTaskListener fileTaskListener;
     Context context;
     private String FILE_NAME_LEVEL = "level.txt";
-    private boolean fileStateFindAnimals;
-    private int gameLevel;
+    private boolean fileStateFindAnimals = false;
+    private int gameLevel = 1;
+
+    public ActivityFileTaskFindAnimals(Context context) {
+        this.context = context;
+        this.FILE_NAME_LEVEL = "level.txt";
+        this.fileStateFindAnimals = true;
+        saveFileLevelOfFindAnimals();
+    }
+
+    public ActivityFileTaskFindAnimals(Context context, int gameLevel) {
+        this.context = context;
+        this.fileStateFindAnimals = true;
+        this.gameLevel = gameLevel;
+        saveFileLevelOfFindAnimals();
+    }
 
     public ActivityFileTaskFindAnimals(Context context, String fileNameLevel, int gameLevel) {
         this.context = context;
+        this.fileStateFindAnimals = true;
         this.FILE_NAME_LEVEL = fileNameLevel;
         this.gameLevel = gameLevel;
+        saveFileLevelOfFindAnimals();
     }
 
     public boolean isFileStateFindAnimals() {
@@ -58,8 +74,10 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
             while((text = br.readLine()) != null) {
                 sb.append(text);
             }
-
+            setGameLevel(Integer.parseInt(sb.toString()));
+            this.fileStateFindAnimals = true;
         } catch (FileNotFoundException e) {
+            this.fileStateFindAnimals = false;
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();

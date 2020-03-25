@@ -88,6 +88,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
     private long mTimeLeftInMillis;
     private CountDownTimer mCountDownTimer;
+    ActivityWhatIsTimer activityWhatIsTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,70 +137,6 @@ public class ActivityFindAnimals extends AppCompatActivity {
         this.numberOfCheckAnswer = numberOfCheckAnswer;
     }
 
-    /*    *//**
-     * Game level file write with setGameLevel
-     *//*
-    public void setGameLevel(int gLevel) {
-        this.gameLevel = gLevel;
-*//*        FileOutputStream fos = null;
-
-        try {
-            fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
-            fos.write(Integer.toString(this.gameLevel).getBytes());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }*//*
-
-
-    }
-
-    */
-
-    /**
-     * Game level file read with getGameLevel
-     *//*
-    public int getGameLevel() {
-
-*//*        FileInputStream fis = null;
-        try {
-            fis = openFileInput(FILE_NAME);
-            InputStreamReader isr = new InputStreamReader(fis);
-            BufferedReader br = new BufferedReader(isr);
-            StringBuilder sb = new StringBuilder();
-            String text;
-
-            while ((text = br.readLine()) != null) {
-                sb.append(text);
-            }
-            this.gameLevel = Integer.parseInt(sb.toString());
-
-        } catch (FileNotFoundException e) {
-            setGameLevel(1);
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (fis != null) {
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }*//*
-
-        return this.gameLevel;
-    }*/
     public void gameRestart() {
         setNumberOfCheckAnswer(0);
         imgViewCheck0FindAnimals.setImageResource(R.mipmap.ic_launcher_incheck_trans);
@@ -241,13 +178,18 @@ public class ActivityFindAnimals extends AppCompatActivity {
                     setNumberOfCheckAnswer(0);
 
                     gameRestart();
+                    if(gameLevel < 5) {
+                        gameLevel++;
+                    } else {
+                        gameLevel = 5;
+                    }
 
-                    String level = Integer.toString(gameLevel);
+                    activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), gameLevel);
+
                     Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalLevelMessage.class);
-                    intent.putExtra("gameLevel", gameLevel);
-                    intent.putExtra("timer", getmTimeLeftInMillis());
+                    intent.putExtra("gameLevel", Integer.toString(gameLevel));
+                    intent.putExtra("mTimeLeftInMillis", Long.toString(mTimeLeftInMillis));
                     startActivity(intent);
-
                 }
 
                 @Override
@@ -369,7 +311,9 @@ public class ActivityFindAnimals extends AppCompatActivity {
                         public void onClick(View v) {
                             Toast.makeText(context, "Message : Fail answer" + imageView.getId(), Toast.LENGTH_SHORT).show();
                             gameRestart();
+
                             Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalTimeFinish.class);
+                            intent.putExtra("gameLevel", Integer.toString(gameLevel));
                             startActivity(intent);
 
                         }

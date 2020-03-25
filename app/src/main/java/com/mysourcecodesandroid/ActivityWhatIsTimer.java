@@ -9,6 +9,16 @@ public class ActivityWhatIsTimer extends ActivityFileTaskFindAnimals {
     private long gameTimer;
     private int numberOfRandomPlaceFindAnimal;
 
+    public ActivityWhatIsTimer(Context context) {
+        super(context);
+        saveGameTimer();
+    }
+
+    public ActivityWhatIsTimer(Context context, int gameLevel) {
+        super(context, gameLevel);
+        saveGameTimer();
+    }
+
     public ActivityWhatIsTimer(Context context, String FILE_NAME, int gameLevel, final long gameTimer) {
         super(context, FILE_NAME, gameLevel);
         this.gameTimer = gameTimer;
