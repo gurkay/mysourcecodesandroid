@@ -47,7 +47,42 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
     public void setGameLevel(int gameLevel) {
         this.gameLevel = gameLevel;
     }
+
+    public boolean chkLogFileStateFindAnimals(String fileName) {
+
+        FileInputStream fis = null;
+
+        try {
+            fis = openFileInput(fileName);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
+
+            while((text = br.readLine()) != null) {
+                sb.append(text);
+            }
+
+            return true;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if(fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public boolean chkFileStateFindAnimals(String fileName) {
+
         FileInputStream fis = null;
 
         try {
@@ -88,32 +123,32 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
         btnLevel4MainFindAnimals = findViewById(R.id.btnLevel4MainFindAnimals);
         btnLevel5MainFindAnimals = findViewById(R.id.btnLevel5MainFindAnimals);
 
-        if(chkFileStateFindAnimals("logTraceFindAnimals.txt")) {
+        if(chkLogFileStateFindAnimals("logTraceFindAnimals.txt")) {
+            myLogTrace.setMessage("chkLogFileStateFindAnimals(); " + chkLogFileStateFindAnimals("logTraceFindAnimals.txt"));
             myLogTrace = new MyLogTrace(getApplicationContext(), "logTraceFindAnimals.txt");
+        } else {
+            myLogTrace = new MyLogTrace(getApplicationContext());
         }
 
-
-
-        try {
+/*        try {
             activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), Integer.parseInt(getIntent().getExtras().getString("gameLevel")));
             myLogTrace.setMessage("activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), Integer.parseInt(getIntent().getExtras().getString(\"gameLevel\")));");
         } catch (Exception e) {
             e.printStackTrace();
-            try {
+
+            if(chkFileStateFindAnimals("level.txt")) {
                 myLogTrace.setMessage("chkFileStateFindAnimals(); " + chkFileStateFindAnimals("level.txt"));
-                if(chkFileStateFindAnimals("level.txt")) {
-                    myLogTrace.setMessage("if(chkFileStateFindAnimals()) {");
-                    activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), getGameLevel());
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-
+                activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), getGameLevel());
+            } else {
                 activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), "level.txt", 1, 20000);
-                myLogTrace.setMessage("activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), \"level.txt\", 1, 20000);");
             }
-
+        }*/
+        if(chkFileStateFindAnimals("level.txt")) {
+            myLogTrace.setMessage("chkFileStateFindAnimals(); " + chkFileStateFindAnimals("level.txt"));
+            activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), getGameLevel());
+        } else {
+            activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), "level.txt", 1, 20000);
         }
-
         // activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), "level.txt", 1, 20000);
         /**
          * LEVEL LOAD
@@ -184,7 +219,9 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
                 intent.putExtra("gameLevel", Integer.toString(1));
                 intent.putExtra("gameTimer", Long.toString(20000));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(1));
+                intent.putExtra("randomPlaceFindAnimal", Integer.toString(1));
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -195,7 +232,9 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
                 intent.putExtra("gameLevel", Integer.toString(2));
                 intent.putExtra("gameTimer", Long.toString(17000));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(2));
+                intent.putExtra("randomPlaceFindAnimal", Integer.toString(2));
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -206,7 +245,9 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
                 intent.putExtra("gameLevel", Integer.toString(3));
                 intent.putExtra("gameTimer", Long.toString(14000));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(2));
+                intent.putExtra("randomPlaceFindAnimal", Integer.toString(3));
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -217,7 +258,9 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
                 intent.putExtra("gameLevel", Integer.toString(4));
                 intent.putExtra("gameTimer", Long.toString(11000));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(3));
+                intent.putExtra("randomPlaceFindAnimal", Integer.toString(5));
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -228,7 +271,9 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
                 intent.putExtra("gameLevel", Integer.toString(5));
                 intent.putExtra("gameTimer", Long.toString(8000));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(4));
+                intent.putExtra("randomPlaceFindAnimal", Integer.toString(7));
                 startActivity(intent);
+                finish();
             }
         });
 

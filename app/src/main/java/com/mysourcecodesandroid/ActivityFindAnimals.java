@@ -81,7 +81,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
     TableLayout tblLayoutFindAnimals;
     Context context = this;
     int randomIntFindAnimal, randomPlaceFindAnimal;
-
+    private int imageViewHeight = 550;
     private int numberOfRandomPlaceFindAnimal;
     private int numberOfCheckAnswer = 0;
     private int gameLevel;
@@ -117,12 +117,11 @@ public class ActivityFindAnimals extends AppCompatActivity {
         this.gameLevel = Integer.parseInt(getIntent().getExtras().getString("gameLevel"));
         this.mTimeLeftInMillis = Long.parseLong(getIntent().getExtras().getString("gameTimer"));
         this.numberOfRandomPlaceFindAnimal = Integer.parseInt(getIntent().getExtras().getString("numberOfRandomPlaceFindAnimal"));
+        this.randomPlaceFindAnimal = Integer.parseInt(getIntent().getExtras().getString("randomPlaceFindAnimal"));
 
         txtNumberOfLevelFindAnimals.setText(Integer.toString(this.gameLevel));
 
         gameStart();
-
-
     }
 
     public long getmTimeLeftInMillis() {
@@ -135,6 +134,133 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
     public void setNumberOfCheckAnswer(int numberOfCheckAnswer) {
         this.numberOfCheckAnswer = numberOfCheckAnswer;
+    }
+
+    /**
+     * Game Start
+     */
+    public void gameStart() {
+        int count = 0;
+        int columsTblRow = 2;
+        randomIntFindAnimal = randomNumberCreate(0, 25);
+        txtQuestionFindAnimals.setText(questionFindAnimals[randomIntFindAnimal]);
+
+        int rndPlaceFindAnimal = randomNumberCreate(0, numberOfRandomPlaceFindAnimal);
+        if (this.gameLevel == 4) {
+            this.imageViewHeight = 350;
+        } else if (this.gameLevel == 5) {
+            this.imageViewHeight = 300;
+        }
+        // image view create
+        for (int i = 0; i < numberOfRandomPlaceFindAnimal; i++) {
+            TableRow tableRow = new TableRow(context);
+
+            for (int j = 0; j < columsTblRow; j++) {
+                int randomNumber = randomNumberCreate(0, 25);
+                // Use to image
+                while (useToImage(randomNumber) == true) {
+                    randomNumber = randomNumberCreate(0, 25);
+                }
+
+                final ImageView imageView = new ImageView(context);
+                if (this.gameLevel == 2) {
+                    if(count < 3) {
+                        if (count == rndPlaceFindAnimal) {
+                            imageView.setId(randomIntFindAnimal);
+                            imageView.setImageResource(picturesFindAnimals[randomIntFindAnimal]);
+
+                            imageView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Toast.makeText(context, "Answer : Correct" + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                    setNumberOfCheckAnswer(getNumberOfCheckAnswer() + 1);
+                                    correctAnswer(getNumberOfCheckAnswer());
+                                }
+                            });
+
+                            useToImage(randomIntFindAnimal);
+
+                            imageView.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, imageViewHeight));
+                            tableRow.addView(imageView);
+
+                        } else {
+                            imageView.setId(randomNumber);
+                            imageView.setImageResource(picturesFindAnimals[randomNumber]);
+
+                            imageView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Toast.makeText(context, "Message : Fail answer" + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                    gameRestart();
+
+                                    Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalTimeFinish.class);
+                                    intent.putExtra("gameLevel", Integer.toString(gameLevel));
+                                    startActivity(intent);
+                                    finish();
+
+                                }
+                            });
+                            useToImage(randomIntFindAnimal);
+
+                            imageView.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, imageViewHeight));
+                            tableRow.addView(imageView);
+
+                        }
+                        count++;
+                    }
+                } else {
+                    if (count == rndPlaceFindAnimal) {
+                        imageView.setId(randomIntFindAnimal);
+                        imageView.setImageResource(picturesFindAnimals[randomIntFindAnimal]);
+
+                        imageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(context, "Answer : Correct" + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                setNumberOfCheckAnswer(getNumberOfCheckAnswer() + 1);
+                                correctAnswer(getNumberOfCheckAnswer());
+                            }
+                        });
+
+                        useToImage(randomIntFindAnimal);
+
+                        imageView.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, imageViewHeight));
+                        tableRow.addView(imageView);
+
+                    } else {
+                        imageView.setId(randomNumber);
+                        imageView.setImageResource(picturesFindAnimals[randomNumber]);
+
+                        imageView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(context, "Message : Fail answer" + imageView.getId(), Toast.LENGTH_SHORT).show();
+                                gameRestart();
+
+                                Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalTimeFinish.class);
+                                intent.putExtra("gameLevel", Integer.toString(gameLevel));
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        });
+                        useToImage(randomIntFindAnimal);
+
+                        imageView.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, imageViewHeight));
+                        tableRow.addView(imageView);
+
+                    }
+                    count++;
+                }
+            }
+
+            tblLayoutFindAnimals.addView(tableRow);
+        }
+
+        /**
+         *  time counter
+         */
+        startTime();
     }
 
     public void gameRestart() {
@@ -178,13 +304,13 @@ public class ActivityFindAnimals extends AppCompatActivity {
                     setNumberOfCheckAnswer(0);
 
                     gameRestart();
-                    if(gameLevel == 1) {
+                    if (gameLevel == 1) {
                         gameLevel++;
-                    } else if(gameLevel == 2){
+                    } else if (gameLevel == 2) {
                         gameLevel++;
-                    } else if(gameLevel == 3){
+                    } else if (gameLevel == 3) {
                         gameLevel++;
-                    } else if(gameLevel == 4){
+                    } else if (gameLevel == 4) {
                         gameLevel++;
                     }
 
@@ -233,7 +359,6 @@ public class ActivityFindAnimals extends AppCompatActivity {
             }
         }.start();
 
-
     }
 
     /**
@@ -260,98 +385,6 @@ public class ActivityFindAnimals extends AppCompatActivity {
         // String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d", seconds);
         txtNumberOfTimerFindAnimals.setText(timeLeftFormatted);
-    }
-
-    /**
-     * GET LEVEL STATE
-     */
-    public void getLevelState() {
-        int count = 0;
-        randomIntFindAnimal = randomNumberCreate(0, 18);
-        txtQuestionFindAnimals.setText(questionFindAnimals[randomIntFindAnimal]);
-
-        randomPlaceFindAnimal = randomNumberCreate(0, numberOfRandomPlaceFindAnimal);
-
-        Log.d("Gürkay CONSOLE LOG TAG", "TIMER : " + getmTimeLeftInMillis());
-
-        // image view create
-        for (int i = 0; i < numberOfRandomPlaceFindAnimal; i++) {
-
-            TableRow tableRow = new TableRow(context);
-
-            for (int j = 0; j < 2; j++) {
-
-
-                int randomNumber = randomNumberCreate(0, 18);
-                // Use to image
-                while (useToImage(randomNumber) == true) {
-                    randomNumber = randomNumberCreate(0, 18);
-                }
-                final ImageView imageView = new ImageView(context);
-
-                if (count == randomPlaceFindAnimal) {
-                    imageView.setId(randomIntFindAnimal);
-                    imageView.setImageResource(picturesFindAnimals[randomIntFindAnimal]);
-
-                    imageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(context, "Answer : Correct" + imageView.getId(), Toast.LENGTH_SHORT).show();
-                            setNumberOfCheckAnswer(getNumberOfCheckAnswer() + 1);
-                            correctAnswer(getNumberOfCheckAnswer());
-                        }
-                    });
-
-                    useToImage(randomIntFindAnimal);
-
-                    imageView.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                    tableRow.addView(imageView);
-                    count++;
-                } else {
-                    imageView.setId(randomNumber);
-                    imageView.setImageResource(picturesFindAnimals[randomNumber]);
-
-                    imageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(context, "Message : Fail answer" + imageView.getId(), Toast.LENGTH_SHORT).show();
-                            gameRestart();
-
-                            Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalTimeFinish.class);
-                            intent.putExtra("gameLevel", Integer.toString(gameLevel));
-                            startActivity(intent);
-                            finish();
-
-                        }
-                    });
-                    useToImage(randomIntFindAnimal);
-
-                    imageView.setLayoutParams(new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                    tableRow.addView(imageView);
-                    count++;
-                }
-
-
-            }
-
-            tblLayoutFindAnimals.addView(tableRow);
-        }
-
-    }
-
-    /**
-     * Game Start
-     */
-    public void gameStart() {
-        /**
-         * LEVEL STATE
-         */
-        getLevelState();
-
-        /**
-         *  time counter
-         */
-        startTime();
     }
 
     /**

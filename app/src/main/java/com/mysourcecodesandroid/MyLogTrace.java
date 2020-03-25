@@ -22,11 +22,18 @@ public class MyLogTrace implements ActivityInterfaceAll.MyLogTraceListener {
     private String message = MESSAGE_HEADER_BEGIN;
 
 
-
     private boolean fileState;
+
+    public MyLogTrace(Context context) {
+        this.context = context;
+
+        saveLogTrace();
+
+    }
 
     /**
      * CONSTRUCTOR
+     *
      * @param context
      * @param fileName
      */
@@ -34,13 +41,14 @@ public class MyLogTrace implements ActivityInterfaceAll.MyLogTraceListener {
         this.context = context;
         this.FILE_NAME = fileName;
 
-        if(!isFileState()) {
+        if (!isFileState()) {
             saveLogTrace();
         }
     }
 
     /**
      * GETTER AND SETTER METHODS
+     *
      * @return
      */
     public boolean isFileState() {
@@ -51,7 +59,9 @@ public class MyLogTrace implements ActivityInterfaceAll.MyLogTraceListener {
         this.fileState = fileState;
     }
 
-    public String getTag() { return tag; }
+    public String getTag() {
+        return tag;
+    }
 
 
     public String getMessage() {
@@ -76,7 +86,7 @@ public class MyLogTrace implements ActivityInterfaceAll.MyLogTraceListener {
             StringBuilder sb = new StringBuilder();
             String text;
 
-            while((text = br.readLine()) != null) {
+            while ((text = br.readLine()) != null) {
                 sb.append(text);
             }
 
@@ -87,7 +97,7 @@ public class MyLogTrace implements ActivityInterfaceAll.MyLogTraceListener {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if(fis != null) {
+            if (fis != null) {
                 try {
                     fis.close();
                 } catch (IOException e) {
@@ -123,7 +133,7 @@ public class MyLogTrace implements ActivityInterfaceAll.MyLogTraceListener {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if(fos != null) {
+            if (fos != null) {
                 try {
                     fos.close();
                 } catch (IOException e) {

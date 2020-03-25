@@ -11,18 +11,16 @@ public class ActivityWhatIsTimer extends ActivityFileTaskFindAnimals {
 
     public ActivityWhatIsTimer(Context context) {
         super(context);
-        saveGameTimer();
+        this.gameTimer = 20000;
     }
 
     public ActivityWhatIsTimer(Context context, int gameLevel) {
         super(context, gameLevel);
-        saveGameTimer();
     }
 
     public ActivityWhatIsTimer(Context context, String FILE_NAME, int gameLevel, final long gameTimer) {
         super(context, FILE_NAME, gameLevel);
         this.gameTimer = gameTimer;
-        saveGameTimer();
     }
 
     public long getGameTimer() {
@@ -41,25 +39,7 @@ public class ActivityWhatIsTimer extends ActivityFileTaskFindAnimals {
         this.numberOfRandomPlaceFindAnimal = numberOfRandomPlaceFindAnimal;
     }
 
-    public void saveGameTimer() {
-        if (getGameLevel() == 1) {
-            setGameTimer(20000);
-            setNumberOfRandomPlaceFindAnimal(1);
-        } else if (getGameLevel() == 2) {
-            setGameTimer(17000);
-            setNumberOfRandomPlaceFindAnimal(2);
-        } else if (getGameLevel() == 3) {
-            setGameTimer(14000);
-            setNumberOfRandomPlaceFindAnimal(2);
-        } else if (getGameLevel() == 4) {
-            setGameTimer(11000);
-            setNumberOfRandomPlaceFindAnimal(3);
-        } else if (getGameLevel() == 5) {
-            setGameTimer(8000);
-            setNumberOfRandomPlaceFindAnimal(4);
-        }
 
-    }
 
 
 }

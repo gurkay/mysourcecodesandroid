@@ -29,7 +29,6 @@ public class ActivityFindAnimalLevelMessage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ActivityMainFindAnimals.class);
-                intent.putExtra("gameLevel", getIntent().getExtras().getString("gameLevel"));
                 startActivity(intent);
                 finish();
             }
