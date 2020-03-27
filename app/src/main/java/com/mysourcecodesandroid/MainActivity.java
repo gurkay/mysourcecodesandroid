@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity {
     ListView mainListView;
     Context context = this;
 
-    String headList[] = {"Example 0", "Example 1", "Example 2", "Example 3", "Example 4", "Example 5",
-            "Example 6", "Example 7", "Example 8", "Example 9", "Example 10"};
+    String headList[] = {"Example 0", "Example 1", "Example 2", "Example 3", "Example 4",
+            "Example 5", "Example 6", "Example 7", "Example 8", "Example 9", "Example 10"};
+
     String descriptionsList[] = {
             "RadioButton ve programatik olarak eklenen checkbox örneği",
             "Custom Toast Message Example",
@@ -33,12 +34,19 @@ public class MainActivity extends AppCompatActivity {
             "Playing Sounds and Music application",
             "Read / Write Text File",
             "Tank Savaslari",
-            "Test"
+            "Grid Layout and CardView"
     };
-    int pictures[] = {R.drawable.afghanistan, R.drawable.albania, R.drawable.algeria,
-            R.drawable.argentina, R.drawable.macedonia, R.drawable.nigeria,
-            R.drawable.romania, R.drawable.south_korea, R.drawable.turkey,
-            R.drawable.vietnam, R.drawable.turkey};
+    int pictures[] = {R.drawable.afghanistan,
+            R.drawable.albania,
+            R.drawable.algeria,
+            R.drawable.argentina,
+            R.drawable.macedonia,
+            R.drawable.nigeria,
+            R.drawable.romania,
+            R.drawable.south_korea,
+            R.drawable.turkey,
+            R.drawable.vietnam,
+            R.drawable.turkey};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 9:
                         startActivity(new Intent(MainActivity.this, ActivityWarior.class));
+                        break;
+                    case 10:
+                        startActivity(new Intent(MainActivity.this, ActivityGridLayoutCardView.class));
                         break;
                     default:
                         break;
