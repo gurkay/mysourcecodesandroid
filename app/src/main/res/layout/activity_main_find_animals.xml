@@ -4,39 +4,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:background="@drawable/fabg"
+    android:gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LEVELS"
         android:textSize="45sp"
+        android:textColor="@color/DodgerBlue"
         />
 
     <Button
         android:id="@+id/btnLevel1MainFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/MediumBlue"
         android:text="Level 1"/>
     <Button
         android:id="@+id/btnLevel2MainFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/MediumBlue"
         android:text="Level 2"/>
     <Button
         android:id="@+id/btnLevel3MainFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/MediumBlue"
         android:text="Level 3"/>
     <Button
         android:id="@+id/btnLevel4MainFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/MediumBlue"
         android:text="Level 4"/>
     <Button
         android:id="@+id/btnLevel5MainFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/MediumBlue"
         android:text="Level 5"/>
 
 </LinearLayout>

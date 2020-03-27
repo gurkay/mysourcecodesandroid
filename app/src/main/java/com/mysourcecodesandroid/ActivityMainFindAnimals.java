@@ -21,7 +21,6 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
     Button btnLevel1MainFindAnimals, btnLevel2MainFindAnimals, btnLevel3MainFindAnimals, btnLevel4MainFindAnimals, btnLevel5MainFindAnimals;
     MyLogTrace myLogTrace;
     ActivityWhatIsTimer activityWhatIsTimer;
-    ActivityFileTaskFindAnimals activityFileTaskFindAnimals;
     private int gameLevel;
 
     @Override
@@ -130,30 +129,16 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
             myLogTrace = new MyLogTrace(getApplicationContext());
         }
 
-/*        try {
-            activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), Integer.parseInt(getIntent().getExtras().getString("gameLevel")));
-            myLogTrace.setMessage("activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), Integer.parseInt(getIntent().getExtras().getString(\"gameLevel\")));");
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            if(chkFileStateFindAnimals("level.txt")) {
-                myLogTrace.setMessage("chkFileStateFindAnimals(); " + chkFileStateFindAnimals("level.txt"));
-                activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), getGameLevel());
-            } else {
-                activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), "level.txt", 1, 20000);
-            }
-        }*/
         if(chkFileStateFindAnimals("level.txt")) {
             myLogTrace.setMessage("chkFileStateFindAnimals(); " + chkFileStateFindAnimals("level.txt"));
             activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), getGameLevel());
         } else {
             activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), "level.txt", 1, 20000);
         }
-        // activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), "level.txt", 1, 20000);
+
         /**
          * LEVEL LOAD
          */
-
         myLogTrace.setMessage("create file and game level : " + activityWhatIsTimer.getGameLevel());
         myLogTrace.setMessage("Game Timer : " + activityWhatIsTimer.getGameTimer());
         myLogTrace.setMessage("Game Number of Random Find Animal : " + activityWhatIsTimer.getNumberOfRandomPlaceFindAnimal());
