@@ -1,8 +1,6 @@
 package com.mysourcecodesandroid;
 
-import android.app.Activity;
 import android.content.Context;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

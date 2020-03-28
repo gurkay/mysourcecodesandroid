@@ -5,7 +5,6 @@ import android.content.Context;
 public class ActivityWhatIsTimer extends ActivityFileTaskFindAnimals {
 
 
-
     private long gameTimer;
     private int numberOfRandomPlaceFindAnimal;
 
@@ -38,8 +37,6 @@ public class ActivityWhatIsTimer extends ActivityFileTaskFindAnimals {
     public void setNumberOfRandomPlaceFindAnimal(int numberOfRandomPlaceFindAnimal) {
         this.numberOfRandomPlaceFindAnimal = numberOfRandomPlaceFindAnimal;
     }
-
-
 
 
 }

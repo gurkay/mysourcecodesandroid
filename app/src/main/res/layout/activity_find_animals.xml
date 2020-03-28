@@ -1,121 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/pnlMainLinearLayoutFindAnimals"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="5dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginBottom="5dp"
-    android:background="@drawable/fabg">
+    android:background="@color/SteelBlue">
 
-
-        <TextView
-            android:id="@+id/txtLevelFindAnimals"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:gravity="left"
-            android:textColor="@color/OrangeRed"
-            android:textStyle="bold|italic"
-            android:layout_marginTop="95dp"
-            android:text="Level"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/txtCorrectAnswerFindAnimals"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_alignParentTop="true"
-            android:textColor="@color/OrangeRed"
-            android:textStyle="bold|italic"
-            android:layout_marginTop="120dp"
-            android:text="Correct Answer"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/txtTimerFindAnimals"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/OrangeRed"
-            android:textStyle="bold|italic"
-            android:layout_marginRight="2dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="95dp"
-            android:text="Timer"
-            android:textSize="25sp" />
-
-            <TextView
-                android:id="@+id/txtNumberOfLevelFindAnimals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold|italic"
-                android:layout_below="@id/txtLevelFindAnimals"
-                android:layout_marginLeft="15dp"
-                android:text="1"
-                android:textSize="25sp" />
-
-            <ImageView
-                android:id="@+id/imgViewCheck0FindAnimals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@id/txtCorrectAnswerFindAnimals"
-                android:layout_below="@id/txtCorrectAnswerFindAnimals"
-                android:layout_toRightOf="@id/txtNumberOfLevelFindAnimals"
-                android:src="@mipmap/ic_launcher_incheck_trans" />
-
-            <ImageView
-                android:id="@+id/imgViewCheck1FindAnimals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txtCorrectAnswerFindAnimals"
-                android:layout_toRightOf="@id/imgViewCheck0FindAnimals"
-                android:src="@mipmap/ic_launcher_incheck_trans" />
-
-            <ImageView
-                android:id="@+id/imgViewCheck2FindAnimals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/imgViewCheck1FindAnimals"
-                android:layout_below="@id/txtCorrectAnswerFindAnimals"
-                android:src="@mipmap/ic_launcher_incheck_trans" />
-
-            <TextView
-                android:id="@+id/txtNumberOfTimerFindAnimals"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold|italic"
-                android:layout_below="@id/txtTimerFindAnimals"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:text="00"
-                android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/txtQuestionTitleFindAnimals"
+        android:id="@+id/txtLevelFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:gravity="left"
+        android:text="Level"
+        android:textColor="@color/AntiqueWhite"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/txtCorrectAnswerFindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:text="Correct Answer"
+        android:textColor="@color/AntiqueWhite"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/txtTimerFindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="2dp"
+        android:text="Timer"
+        android:textColor="@color/AntiqueWhite"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/txtNumberOfLevelFindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtLevelFindAnimals"
+        android:layout_marginLeft="25dp"
+        android:text="1"
         android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold|italic"
-        android:layout_below="@id/txtNumberOfLevelFindAnimals"
-        android:layout_marginTop="5dp"
-        android:text="Question"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <ImageView
+        android:id="@+id/imgViewCheck0FindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@id/txtCorrectAnswerFindAnimals"
+        android:layout_alignStart="@id/txtCorrectAnswerFindAnimals"
+        android:layout_toRightOf="@id/txtNumberOfLevelFindAnimals"
+        android:src="@mipmap/ic_launcher_incheck_trans" />
+
+    <ImageView
+        android:id="@+id/imgViewCheck1FindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@id/txtCorrectAnswerFindAnimals"
+        android:layout_toRightOf="@id/imgViewCheck0FindAnimals"
+        android:src="@mipmap/ic_launcher_incheck_trans" />
+
+    <ImageView
+        android:id="@+id/imgViewCheck2FindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@id/txtCorrectAnswerFindAnimals"
+        android:layout_toRightOf="@id/imgViewCheck1FindAnimals"
+        android:src="@mipmap/ic_launcher_incheck_trans" />
+
+    <TextView
+        android:id="@+id/txtNumberOfTimerFindAnimals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtTimerFindAnimals"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:text="00"
+        android:textColor="@color/OrangeRed"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/txtQuestionFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold|italic"
-        android:layout_below="@id/txtQuestionTitleFindAnimals"
-        android:layout_marginTop="5dp"
+        android:layout_below="@id/txtNumberOfLevelFindAnimals"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
         android:text="Question"
-        android:textSize="25sp" />
+        android:textColor="@color/AntiqueWhite"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
 
     <ScrollView
         android:layout_width="wrap_content"
