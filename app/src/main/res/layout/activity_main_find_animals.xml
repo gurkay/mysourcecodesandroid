@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fabg"
+    android:background="@color/SteelBlue"
     android:gravity="center">
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="LEVELS"
         android:textSize="45sp"
-        android:textColor="@color/DodgerBlue"
+        android:textColor="@color/OrangeRed"
         />
 
     <Button
@@ -20,30 +20,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/MediumBlue"
-        android:text="Level 1"/>
+        android:background="@drawable/find_animals_level1_button"/>
     <Button
         android:id="@+id/btnLevel2MainFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/MediumBlue"
-        android:text="Level 2"/>
+        android:background="@drawable/find_animals_level2_button"/>
     <Button
         android:id="@+id/btnLevel3MainFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/MediumBlue"
-        android:text="Level 3"/>
+        android:background="@drawable/find_animals_level3_button"/>
     <Button
         android:id="@+id/btnLevel4MainFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/MediumBlue"
-        android:text="Level 4"/>
+        android:background="@drawable/find_animals_level4_button"/>
     <Button
         android:id="@+id/btnLevel5MainFindAnimals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/MediumBlue"
-        android:text="Level 5"/>
+        android:background="@drawable/find_animals_level5_button"/>
 
 </LinearLayout>

@@ -89,7 +89,6 @@ public class ActivityFindAnimals extends AppCompatActivity {
     private static final String FILE_NAME = "level.txt";
 
     MediaPlayer player;
-    LinearLayout linearLayoutVerticalFindAnimals;
     TextView txtQuestionFindAnimals, txtNumberOfLevelFindAnimals, txtNumberOfTimerFindAnimals;
     ImageView imgViewCheck0FindAnimals, imgViewCheck1FindAnimals, imgViewCheck2FindAnimals;
     TableLayout tblLayoutFindAnimals;
@@ -99,9 +98,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
     private int imageViewHeight = 550;
     private int numberOfRandomPlaceFindAnimal;
     private int numberOfCheckAnswer = 0;
-    private int gameLevel;
 
-    private long mTimeLeftInMillis;
     private CountDownTimer mCountDownTimer;
     ActivityWhatIsTimer activityWhatIsTimer;
 
@@ -123,13 +120,12 @@ public class ActivityFindAnimals extends AppCompatActivity {
         txtNumberOfTimerFindAnimals = findViewById(R.id.txtNumberOfTimerFindAnimals);
         tblLayoutFindAnimals = findViewById(R.id.tblLayoutFindAnimals);
 
+        activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), Integer.parseInt(getIntent().getExtras().getString("gameLevel")));
 
-        this.gameLevel = Integer.parseInt(getIntent().getExtras().getString("gameLevel"));
-        this.mTimeLeftInMillis = Long.parseLong(getIntent().getExtras().getString("gameTimer"));
         this.numberOfRandomPlaceFindAnimal = Integer.parseInt(getIntent().getExtras().getString("numberOfRandomPlaceFindAnimal"));
         this.randomPlaceFindAnimal = Integer.parseInt(getIntent().getExtras().getString("randomPlaceFindAnimal"));
 
-        txtNumberOfLevelFindAnimals.setText(Integer.toString(this.gameLevel));
+        txtNumberOfLevelFindAnimals.setText(Integer.toString(activityWhatIsTimer.getGameLevel()));
 
         mTTS = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override
@@ -149,10 +145,6 @@ public class ActivityFindAnimals extends AppCompatActivity {
         });
 
         gameStart();
-    }
-
-    public long getmTimeLeftInMillis() {
-        return mTimeLeftInMillis;
     }
 
     public int getNumberOfCheckAnswer() {
@@ -218,9 +210,9 @@ public class ActivityFindAnimals extends AppCompatActivity {
         int rndPlaceFindAnimal = randomNumberCreate(0, numberOfRandomPlaceFindAnimal);
         randomIntFindAnimal = randomNumberCreate(0, 25);
         txtQuestionFindAnimals.setText(questionFindAnimals[randomIntFindAnimal]);
-        if (this.gameLevel == 4) {
+        if (activityWhatIsTimer.getGameLevel() == 4) {
             this.imageViewHeight = 350;
-        } else if (this.gameLevel == 5) {
+        } else if (activityWhatIsTimer.getGameLevel() == 5) {
             this.imageViewHeight = 300;
         }
 
@@ -254,7 +246,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
                 }
 
                 final ImageView imageView = new ImageView(context);
-                if (this.gameLevel == 2) {
+                if (this.activityWhatIsTimer.getGameLevel() == 2) {
                     if (count < 3) {
                         if (count == rndPlaceFindAnimal) {
                             imageView.setId(randomIntFindAnimal);
@@ -286,7 +278,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
                                     gameRestart();
 
                                     Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalTimeFinish.class);
-                                    intent.putExtra("gameLevel", Integer.toString(gameLevel));
+                                    intent.putExtra("gameLevel", Integer.toString(activityWhatIsTimer.getGameLevel()));
                                     startActivity(intent);
                                     finish();
 
@@ -330,7 +322,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
                                 gameRestart();
 
                                 Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalTimeFinish.class);
-                                intent.putExtra("gameLevel", Integer.toString(gameLevel));
+                                intent.putExtra("gameLevel", Integer.toString(activityWhatIsTimer.getGameLevel()));
                                 startActivity(intent);
                                 finish();
 
@@ -396,23 +388,13 @@ public class ActivityFindAnimals extends AppCompatActivity {
 
                     gameRestart();
 
-                    if (gameLevel == 1) {
-                        gameLevel++;
-                    } else if (gameLevel == 2) {
-                        gameLevel++;
-                    } else if (gameLevel == 3) {
-                        gameLevel++;
-                    } else if (gameLevel == 4) {
-                        gameLevel++;
-                    }
-
-                    activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), gameLevel);
-
-
+                    activityWhatIsTimer.setGameLevel(activityWhatIsTimer.getGameLevel() + 1);
+                    activityWhatIsTimer.onClickLevelButtonCheckGameTimer(activityWhatIsTimer.getGameLevel());
+                    activityWhatIsTimer.saveFileLevelOfFindAnimals();
 
                     Intent intent = new Intent(getApplicationContext(), ActivityFindAnimalLevelMessage.class);
-                    intent.putExtra("gameLevel", Integer.toString(gameLevel));
-                    intent.putExtra("mTimeLeftInMillis", Long.toString(mTimeLeftInMillis));
+                    intent.putExtra("gameLevel", Integer.toString(activityWhatIsTimer.getGameLevel()));
+                    intent.putExtra("mTimeLeftInMillis", Long.toString(activityWhatIsTimer.getGameTimer()));
                     startActivity(intent);
                     finish();
                 }
@@ -440,10 +422,10 @@ public class ActivityFindAnimals extends AppCompatActivity {
      */
     public void startTime() {
 
-        mCountDownTimer = new CountDownTimer(getmTimeLeftInMillis(), 1000) {
+        mCountDownTimer = new CountDownTimer(activityWhatIsTimer.getGameTimer(), 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                mTimeLeftInMillis = millisUntilFinished;
+                activityWhatIsTimer.setGameTimer(millisUntilFinished);
                 updateCountDownText();
             }
 
@@ -474,7 +456,7 @@ public class ActivityFindAnimals extends AppCompatActivity {
      */
     public void updateCountDownText() {
         // int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
-        int seconds = (int) (getmTimeLeftInMillis() / 1000) % 60;
+        int seconds = (int) (activityWhatIsTimer.getGameTimer() / 1000) % 60;
 
         // String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d", seconds);

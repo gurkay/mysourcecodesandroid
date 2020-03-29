@@ -21,7 +21,6 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
     Button btnLevel1MainFindAnimals, btnLevel2MainFindAnimals, btnLevel3MainFindAnimals, btnLevel4MainFindAnimals, btnLevel5MainFindAnimals;
     MyLogTrace myLogTrace;
     ActivityWhatIsTimer activityWhatIsTimer;
-    private int gameLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +38,6 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
 
     }
 
-    public int getGameLevel() {
-        return gameLevel;
-    }
-
-    public void setGameLevel(int gameLevel) {
-        this.gameLevel = gameLevel;
-    }
-
     public boolean chkLogFileStateFindAnimals(String fileName) {
 
         FileInputStream fis = null;
@@ -58,7 +49,7 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
             StringBuilder sb = new StringBuilder();
             String text;
 
-            while((text = br.readLine()) != null) {
+            while ((text = br.readLine()) != null) {
                 sb.append(text);
             }
 
@@ -70,7 +61,7 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
             e.printStackTrace();
             return false;
         } finally {
-            if(fis != null) {
+            if (fis != null) {
                 try {
                     fis.close();
                 } catch (IOException e) {
@@ -80,7 +71,7 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
         }
     }
 
-    public boolean chkFileStateFindAnimals(String fileName) {
+    public void chkFileStateFindAnimals(String fileName) {
 
         FileInputStream fis = null;
 
@@ -91,19 +82,24 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
             StringBuilder sb = new StringBuilder();
             String text;
 
-            while((text = br.readLine()) != null) {
+            while ((text = br.readLine()) != null) {
                 sb.append(text);
             }
-            setGameLevel(Integer.parseInt(sb.toString()));
-            return true;
+
+            myLogTrace.setMessage("chkFileStateFindAnimals(); " + fileName);
+            activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), Integer.parseInt(sb.toString()));
+
         } catch (FileNotFoundException e) {
+            myLogTrace.setMessage("chkFileStateFindAnimals() fail : there are not level.txt ");
+            activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), "level.txt", 1, 20000);
             e.printStackTrace();
-            return false;
+
+
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+
         } finally {
-            if(fis != null) {
+            if (fis != null) {
                 try {
                     fis.close();
                 } catch (IOException e) {
@@ -122,87 +118,60 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
         btnLevel4MainFindAnimals = findViewById(R.id.btnLevel4MainFindAnimals);
         btnLevel5MainFindAnimals = findViewById(R.id.btnLevel5MainFindAnimals);
 
-        if(chkLogFileStateFindAnimals("logTraceFindAnimals.txt")) {
+        if (chkLogFileStateFindAnimals("logTraceFindAnimals.txt")) {
             myLogTrace.setMessage("chkLogFileStateFindAnimals(); " + chkLogFileStateFindAnimals("logTraceFindAnimals.txt"));
             myLogTrace = new MyLogTrace(getApplicationContext(), "logTraceFindAnimals.txt");
         } else {
             myLogTrace = new MyLogTrace(getApplicationContext());
         }
 
-        if(chkFileStateFindAnimals("level.txt")) {
-            myLogTrace.setMessage("chkFileStateFindAnimals(); " + chkFileStateFindAnimals("level.txt"));
-            activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), getGameLevel());
-        } else {
-            activityWhatIsTimer = new ActivityWhatIsTimer(getApplicationContext(), "level.txt", 1, 20000);
-        }
-
         /**
-         * LEVEL LOAD
+         * Check level.txt file
          */
-        myLogTrace.setMessage("create file and game level : " + activityWhatIsTimer.getGameLevel());
-        myLogTrace.setMessage("Game Timer : " + activityWhatIsTimer.getGameTimer());
-        myLogTrace.setMessage("Game Number of Random Find Animal : " + activityWhatIsTimer.getNumberOfRandomPlaceFindAnimal());
-
-        if(!activityWhatIsTimer.isFileStateFindAnimals()) {
-            activityWhatIsTimer.saveFileLevelOfFindAnimals();
-            myLogTrace.setMessage("create file and game level : " + activityWhatIsTimer.getGameLevel());
-        }
-
-        activityWhatIsTimer.loadFileLevelOfFindAnimals();
+        chkFileStateFindAnimals("level.txt");
 
         /**
          * Button Enable setting
          */
-        switch (activityWhatIsTimer.getGameLevel()) {
-            case 1:
-                btnLevel1MainFindAnimals.setEnabled(true);
-                btnLevel2MainFindAnimals.setEnabled(false);
-                btnLevel3MainFindAnimals.setEnabled(false);
-                btnLevel4MainFindAnimals.setEnabled(false);
-                btnLevel5MainFindAnimals.setEnabled(false);
+        if (activityWhatIsTimer.getGameLevelState()[0].equals("true")) {
+            btnLevel1MainFindAnimals.setBackground(getDrawable(R.drawable.level1open));
+        } else {
+            btnLevel1MainFindAnimals.setBackground(getDrawable(R.drawable.level1close));
+        }
 
-                myLogTrace.setMessage("btnLevel1MainFindAnimals getId() : " + btnLevel1MainFindAnimals.getId());
+        if (activityWhatIsTimer.getGameLevelState()[1].equals("true")) {
+            btnLevel2MainFindAnimals.setBackground(getDrawable(R.drawable.level2open));
+        } else {
+            btnLevel2MainFindAnimals.setBackground(getDrawable(R.drawable.level2close));
+        }
 
-                break;
-            case 2:
-                btnLevel1MainFindAnimals.setEnabled(true);
-                btnLevel2MainFindAnimals.setEnabled(true);
-                btnLevel3MainFindAnimals.setEnabled(false);
-                btnLevel4MainFindAnimals.setEnabled(false);
-                btnLevel5MainFindAnimals.setEnabled(false);
+        if (activityWhatIsTimer.getGameLevelState()[2].equals("true")) {
+            btnLevel3MainFindAnimals.setBackground(getDrawable(R.drawable.level3open));
+        } else {
+            btnLevel3MainFindAnimals.setBackground(getDrawable(R.drawable.level3close));
+        }
 
-                myLogTrace.setMessage("btnLevel2MainFindAnimals visible : " + btnLevel1MainFindAnimals.getVisibility());
+        if (activityWhatIsTimer.getGameLevelState()[3].equals("true")) {
+            btnLevel4MainFindAnimals.setBackground(getDrawable(R.drawable.level4open));
+        } else {
+            btnLevel4MainFindAnimals.setBackground(getDrawable(R.drawable.level4close));
+        }
 
-                break;
-            case 3:
-                btnLevel1MainFindAnimals.setEnabled(true);
-                btnLevel2MainFindAnimals.setEnabled(true);
-                btnLevel3MainFindAnimals.setEnabled(true);
-                btnLevel4MainFindAnimals.setEnabled(false);
-                btnLevel5MainFindAnimals.setEnabled(false);
-                break;
-            case 4:
-                btnLevel1MainFindAnimals.setEnabled(true);
-                btnLevel2MainFindAnimals.setEnabled(true);
-                btnLevel3MainFindAnimals.setEnabled(true);
-                btnLevel4MainFindAnimals.setEnabled(true);
-                btnLevel5MainFindAnimals.setEnabled(false);
-                break;
-            case 5:
-                btnLevel1MainFindAnimals.setEnabled(true);
-                btnLevel2MainFindAnimals.setEnabled(true);
-                btnLevel3MainFindAnimals.setEnabled(true);
-                btnLevel4MainFindAnimals.setEnabled(true);
-                btnLevel5MainFindAnimals.setEnabled(true);
-                break;
+        if (activityWhatIsTimer.getGameLevelState()[4].equals("true")) {
+            btnLevel5MainFindAnimals.setBackground(getDrawable(R.drawable.level5open));
+        } else {
+            btnLevel5MainFindAnimals.setBackground(getDrawable(R.drawable.level5close));
         }
 
         btnLevel1MainFindAnimals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                activityWhatIsTimer.onClickLevelButtonCheckGameTimer(1);
+
                 Intent intent = new Intent(getApplicationContext(), ActivityFindAnimals.class);
-                intent.putExtra("gameLevel", Integer.toString(1));
-                intent.putExtra("gameTimer", Long.toString(20000));
+                intent.putExtra("gameLevel", Integer.toString(activityWhatIsTimer.getGameLevel()));
+                intent.putExtra("gameTimer", Long.toString(activityWhatIsTimer.getGameTimer()));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(1));
                 intent.putExtra("randomPlaceFindAnimal", Integer.toString(1));
                 startActivity(intent);
@@ -213,9 +182,11 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
         btnLevel2MainFindAnimals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                activityWhatIsTimer.onClickLevelButtonCheckGameTimer(2);
                 Intent intent = new Intent(getApplicationContext(), ActivityFindAnimals.class);
-                intent.putExtra("gameLevel", Integer.toString(2));
-                intent.putExtra("gameTimer", Long.toString(17000));
+                intent.putExtra("gameLevel", Integer.toString(activityWhatIsTimer.getGameLevel()));
+                intent.putExtra("gameTimer", Long.toString(activityWhatIsTimer.getGameTimer()));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(2));
                 intent.putExtra("randomPlaceFindAnimal", Integer.toString(2));
                 startActivity(intent);
@@ -226,9 +197,12 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
         btnLevel3MainFindAnimals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                activityWhatIsTimer.onClickLevelButtonCheckGameTimer(3);
+
                 Intent intent = new Intent(getApplicationContext(), ActivityFindAnimals.class);
-                intent.putExtra("gameLevel", Integer.toString(3));
-                intent.putExtra("gameTimer", Long.toString(14000));
+                intent.putExtra("gameLevel", Integer.toString(activityWhatIsTimer.getGameLevel()));
+                intent.putExtra("gameTimer", Long.toString(activityWhatIsTimer.getGameTimer()));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(2));
                 intent.putExtra("randomPlaceFindAnimal", Integer.toString(3));
                 startActivity(intent);
@@ -239,9 +213,10 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
         btnLevel4MainFindAnimals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                activityWhatIsTimer.onClickLevelButtonCheckGameTimer(4);
                 Intent intent = new Intent(getApplicationContext(), ActivityFindAnimals.class);
-                intent.putExtra("gameLevel", Integer.toString(4));
-                intent.putExtra("gameTimer", Long.toString(11000));
+                intent.putExtra("gameLevel", Integer.toString(activityWhatIsTimer.getGameLevel()));
+                intent.putExtra("gameTimer", Long.toString(activityWhatIsTimer.getGameTimer()));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(3));
                 intent.putExtra("randomPlaceFindAnimal", Integer.toString(5));
                 startActivity(intent);
@@ -252,9 +227,11 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
         btnLevel5MainFindAnimals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                activityWhatIsTimer.onClickLevelButtonCheckGameTimer(5);
                 Intent intent = new Intent(getApplicationContext(), ActivityFindAnimals.class);
-                intent.putExtra("gameLevel", Integer.toString(5));
-                intent.putExtra("gameTimer", Long.toString(8000));
+                intent.putExtra("gameLevel", Integer.toString(activityWhatIsTimer.getGameLevel()));
+                intent.putExtra("gameTimer", Long.toString(activityWhatIsTimer.getGameTimer()));
                 intent.putExtra("numberOfRandomPlaceFindAnimal", Integer.toString(4));
                 intent.putExtra("randomPlaceFindAnimal", Integer.toString(7));
                 startActivity(intent);
@@ -263,6 +240,7 @@ public class ActivityMainFindAnimals extends AppCompatActivity {
         });
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

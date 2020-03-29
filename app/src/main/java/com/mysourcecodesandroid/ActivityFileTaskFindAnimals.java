@@ -14,6 +14,7 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
     Context context;
     private String FILE_NAME_LEVEL = "level.txt";
     private boolean fileStateFindAnimals;
+    private String[] gameLevelState = {"true", "false", "false", "false", "false"};
     private int gameLevel;
 
     public ActivityFileTaskFindAnimals(Context context) {
@@ -26,14 +27,12 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
             this.gameLevel = 1;
             saveFileLevelOfFindAnimals();
         }
-
     }
 
     public ActivityFileTaskFindAnimals(Context context, int gameLevel) {
         this.context = context;
         this.fileStateFindAnimals = true;
         this.gameLevel = gameLevel;
-        saveFileLevelOfFindAnimals();
     }
 
     public ActivityFileTaskFindAnimals(Context context, String fileNameLevel, int gameLevel) {
@@ -50,6 +49,14 @@ public class ActivityFileTaskFindAnimals implements ActivityInterfaceAll.FileTas
 
     public void setFileStateFindAnimals(boolean fileStateFindAnimals) {
         this.fileStateFindAnimals = fileStateFindAnimals;
+    }
+
+    public String[] getGameLevelState() {
+        return gameLevelState;
+    }
+
+    public void setGameLevelState(String[] gameLevelState) {
+        this.gameLevelState = gameLevelState;
     }
 
     public int getGameLevel() {
