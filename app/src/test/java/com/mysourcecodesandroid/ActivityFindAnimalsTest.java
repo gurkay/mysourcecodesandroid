@@ -1,14 +1,6 @@
 package com.mysourcecodesandroid;
 
-import org.junit.Test;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
 public class ActivityFindAnimalsTest {
 
@@ -50,7 +42,7 @@ public class ActivityFindAnimalsTest {
         }
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void getGameLevel() {
         try {
             int output;

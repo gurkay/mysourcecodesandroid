@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     Context context = this;
 
     String headList[] = {"Example 0", "Example 1", "Example 2", "Example 3", "Example 4",
-            "Example 5", "Example 6", "Example 7", "Example 8", "Example 9", "Example 10"};
+            "Example 5", "Example 6", "Example 7", "Example 8", "Example 9", "Example 10",
+            "Example 11", "Example 12"};
 
     String descriptionsList[] = {
             "RadioButton ve programatik olarak eklenen checkbox örneği",
@@ -34,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
             "Playing Sounds and Music application",
             "Read / Write Text File",
             "Tank Savaslari",
-            "Grid Layout and CardView"
+            "Grid Layout and CardView",
+            "Tab View",
+            "JSoup Library Using"
     };
     int pictures[] = {R.drawable.afghanistan,
             R.drawable.albania,
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.nigeria,
             R.drawable.romania,
             R.drawable.south_korea,
+            R.drawable.turkey,
+            R.drawable.vietnam,
             R.drawable.turkey,
             R.drawable.vietnam,
             R.drawable.turkey};
@@ -118,6 +123,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 10:
                         startActivity(new Intent(MainActivity.this, ActivityGridLayoutCardView.class));
+                        break;
+                    case 11:
+                        startActivity(new Intent(MainActivity.this, ActivityTabView.class));
+                        break;
+                    case 12:
+                        startActivity(new Intent(MainActivity.this, ActivityJSoupLibrary.class));
                         break;
                     default:
                         break;

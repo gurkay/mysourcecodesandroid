@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">mysourcecodesandroid</string>
+    <string name="app_name">My Source Codes Android</string>
+    <string name="app_tab_view_example">My Tab View Layout Working</string>
     <string name="activity_example1_custom_toast_message">activity example1 custom toast message</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

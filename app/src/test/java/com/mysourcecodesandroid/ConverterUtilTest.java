@@ -1,8 +1,8 @@
 package com.mysourcecodesandroid;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
 
@@ -50,14 +50,14 @@ public class ConverterUtilTest {
 
 
 
-    @Before
+    @BeforeEach
     public void init() {
         lstTest.add("Apple");
         lstTest.add("Orange");
         lstTest.add("Grapes");
     }
 
-    @Test
+    @org.junit.jupiter.api.Test
     public void testSize() {
         assertEquals("Checking size of List", 3, lstTest.size());
     }
@@ -74,13 +74,13 @@ public class ConverterUtilTest {
         assertEquals("Removing 1 fruit from list", 2, lstTest.size());
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @org.junit.jupiter.api.Test(expected = NoSuchElementException.class)
     public void testRemoveException() {
         lstTest.remove("Kiwi");
         assertEquals("Removing 1 fruit from list", 2, lstTest.size());
     }
 
-    @After
+    @AfterEach
     public void destroy() {
         lstTest.removeAll();
     }
