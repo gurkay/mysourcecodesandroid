@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityJSoupLibrary"></activity>
+        <activity android:name=".ActivityWebView"></activity>
+        <activity android:name=".ActivityJSoupLibrary" />
         <activity android:name=".ActivityTabView" />
         <activity android:name=".ActivityMainFindAnimals" />
         <activity android:name=".ActivityFindAnimalTimeFinish" />

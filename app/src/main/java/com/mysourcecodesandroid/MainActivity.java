@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     String headList[] = {"Example 0", "Example 1", "Example 2", "Example 3", "Example 4",
             "Example 5", "Example 6", "Example 7", "Example 8", "Example 9", "Example 10",
-            "Example 11", "Example 12"};
+            "Example 11", "Example 12", "Example 13"};
 
     String descriptionsList[] = {
             "RadioButton ve programatik olarak eklenen checkbox örneği",
@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
             "Tank Savaslari",
             "Grid Layout and CardView",
             "Tab View",
-            "JSoup Library Using"
+            "JSoup Library Using",
+            "Web View Screen"
     };
     int pictures[] = {R.drawable.afghanistan,
             R.drawable.albania,
@@ -51,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.vietnam,
             R.drawable.turkey,
             R.drawable.vietnam,
-            R.drawable.turkey};
+            R.drawable.turkey,
+            R.drawable.albania};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +131,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 12:
                         startActivity(new Intent(MainActivity.this, ActivityJSoupLibrary.class));
+                        break;
+                    case 13:
+                        startActivity(new Intent(MainActivity.this, ActivityWebView.class));
                         break;
                     default:
                         break;
