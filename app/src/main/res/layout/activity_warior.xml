@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:background="@drawable/tank4">
@@ -10,7 +11,7 @@
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/play_tank" />
+        app:srcCompat="@drawable/play_tank" />
     <ImageView
         android:id="@+id/imgWeapon"
         android:layout_width="100dp"
@@ -18,7 +19,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/imgHome"
         android:layout_marginLeft="1dp"
-        android:src="@drawable/weapon7" />
+        app:srcCompat="@drawable/weapon7" />
     <ImageView
         android:id="@+id/imgPaint"
         android:layout_width="100dp"
@@ -26,7 +27,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/imgWeapon"
         android:layout_marginLeft="1dp"
-        android:src="@drawable/paint_tank" />
+        app:srcCompat="@drawable/paint_tank" />
     <ImageView
         android:id="@+id/imgSetting"
         android:layout_width="100dp"
@@ -35,6 +36,6 @@
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/imgPaint"
         android:layout_marginLeft="1dp"
-        android:src="@drawable/setting1" />
+        app:srcCompat="@drawable/setting1" />
 
 </RelativeLayout>
