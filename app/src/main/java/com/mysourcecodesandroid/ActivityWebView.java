@@ -13,7 +13,7 @@ public class ActivityWebView extends AppCompatActivity {
 
     private WebView webView;
     private CustomWebViewClient webViewClient;
-    private String Url = "http://www.aattk.net";
+    private String Url = "http://ybu.edu.tr/sks/";
     ProgressDialog mProgressDialog;
     Context context = this;
 
@@ -22,6 +22,10 @@ public class ActivityWebView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
 
+        init();
+    }
+
+    public void init() {
         mProgressDialog = new ProgressDialog(this);//ProgressDialog objesi oluşturuyoruz
         mProgressDialog.setMessage("Yükleniyor...");//ProgressDialog Yükleniyor yazısı
 
@@ -36,8 +40,6 @@ public class ActivityWebView extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(webViewClient); //oluşturduğumuz webViewClient objesini webViewımıza set ediyoruz
         webView.loadUrl(Url);
-
-
     }
 
     private class CustomWebViewClient extends WebViewClient {
